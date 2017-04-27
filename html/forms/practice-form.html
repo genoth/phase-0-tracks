@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel Form</title>
+</head>
+<body>
+<h3>Travel Form</h3>
+<form name="practice-form" action="success.html" method="post">
+  <fieldset>
+    <div>
+      <label>City</label>
+        <select name= "city">
+          <option value="cherry-hill">Cherry Hill, New Jersey</option>
+          <option value="chicago">Chicago, Illinois</option>
+          <option value="new-york">New York, New York</option>
+        </select>
+    </div>
+        <div>
+          <label>First and last name:</label>
+          <input type="text" name="name">
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" name="email">
+        </div>
+        <div>
+          <label>Date of Travel</label>
+          <input type="date" name="date">
+        </div>
+  </fieldset>
+  <p>
+    <label>Please let us know if you would like any special accommodations:
+    <br>
+    <textarea rows="10" cols="80" name=accommodations></textarea>
+    </label>
+  </p>
+  <button type=submit>Done</button>
+
+</form>
+
+</body>
+</html>
