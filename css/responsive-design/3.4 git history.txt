@@ -1,0 +1,57 @@
+    1  cd devbootcamp/phase-0-tracks/css/responsive-design/
+    2  ls -a
+    3  subl index.html
+    4  subl style.css
+    5  git status
+    6  git status
+    7  git add --all
+    8  git status
+    9  git commit -m "Add style.css to index and add formatting to style for body/main"
+   10  git status
+   11  cd ../..
+   12  ls a
+   13  ls -a
+   14  cd css
+   15  ls -a
+   16  cd positioning/
+   17  ls -a
+   18  cd ..
+   19  cd css-demo
+   20  ls -a
+   21  subl styles.css
+   22  ls -a
+   23  cd styles
+   24  ls -a
+   25  subl practice.css
+   26  cd ../..
+   27  ls -a
+   28  cd responsive-design/
+   29  ls -a
+   30  git status
+   31  git add --all
+   32  git status
+   33  git commit -m "Add formatting for external links in style.css"
+   34  git status
+   35  git status
+   36  git commit -m "Add formatting to #external-links and change body/main width"
+   37  git add style.css
+   38  git commit -m "Add formatting to #external-links and change body/main width"
+   39  git status
+   40  git status
+   41  git add style.css
+   42  git commit -m "Add media query and comment it after test in style.css"
+   43  git status
+   44  git add style.css
+   45  git status
+   46  git commit -m "Add media query for h1 font size and links width in styles.css"
+   47  git status
+   48  git status
+   49  git status
+   50  git push origin new-branch
+   51  git status
+   52  git status
+   53  git checkout master
+   54  git status
+   55  git checkout new-branch
+   56  clear
+   57  history
