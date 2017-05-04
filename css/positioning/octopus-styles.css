@@ -6,13 +6,17 @@
 }
 #hat {
   z-index: 3;
+  margin: auto;
+  display: block;
   position: relative;
   top: -350px;
-  left: 340px;
+  left: 10px;
 }
 #glasses {
   z-index: 2;
+  margin: auto;
+  display: block;
   position: relative;
-  top: -298px;
-  left: 125px;
+  top: -355px;
+  left: 8px;
 }
