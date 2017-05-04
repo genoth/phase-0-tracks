@@ -4,6 +4,7 @@
   display: block;
   padding-top: 150px;
 }
+
 #hat {
   z-index: 3;
   margin: auto;
@@ -12,6 +13,7 @@
   top: -350px;
   left: 10px;
 }
+
 #glasses {
   z-index: 2;
   margin: auto;
