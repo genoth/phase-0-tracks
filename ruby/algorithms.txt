@@ -1,13 +1,13 @@
 For each floor you are assigned to visit:
 
 - Determine the floor you are currently on (the last floor assigned).
-- Determine new floor assigned "n" floor.
-- If the new assigned floor is greater than current assigned floor, press "down" arrow button.
+- Use input to determine new floor assigned ("n" floor).
+- If the new assigned floor is less than current assigned floor, press "down" arrow button.
     - When an elevator arrives and plays the sound "going down," enter the elevator.
     - Then, press the floor button containing the number of the floor (n) you are assigned to visit.
     - Until you hear the floor number followed by "floor," wait in the elevator.
     - Once you hear "nth floor" and the doors open, exit the elvator.
-- If the new assigned floor is less than the current assigned floor, press "up" arrow.
+- If the new assigned floor is greater than the current assigned floor, press "up" arrow.
     - When an elevator arrives and plays the sound "going up," enter the elevator.
     - Then, press the floor button containing the number of the floor (n) you are assigned to visit.
     - Until you hear the floor number followed by "floor," wait in the elevator.
