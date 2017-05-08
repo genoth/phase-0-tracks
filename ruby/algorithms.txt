@@ -1,5 +1,5 @@
 Release 1
-Make cereal.
+Make a bowl of cereal for breakfast.
 - Take a bowl out of the cupboard.
 - Take a box of cereal out of the cupboard.
 - Open box of cereal.
