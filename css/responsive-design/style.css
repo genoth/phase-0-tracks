@@ -29,7 +29,7 @@ cite {
   min-width: 100px;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (min-width: 550px)   {
   #external-links {
     width: 100%;
   }
@@ -39,10 +39,11 @@ cite {
   h1 {
     font-size: 1.3em;
   }
+
 }
 
 /* you're welcome to edit the
-image, figure, and figcaption CSS if you'd like, 
+image, figure, and figcaption CSS if you'd like,
 but it's optional! */
 img {
   width: 100%;
