@@ -1,5 +1,20 @@
-For each floor you are assigned to visit:
+Release 1
+Make cereal.
+- Take a bowl out of the cupboard.
+- Take a box of cereal out of the cupboard.
+- Open box of cereal.
+- Pour contents of cereal box into bowl until contents reach about 2 inches below rim of bowl.
+- Close cereal box and put it back in the cupboard.
+- Take carton of milk out of the refridgerator.
+- Open carton of milk.
+- Pour contents of milk carton into same bowl, until cereal and milk rise to about 1 inch below rim of bowl.
+- Close carton of milk and put it back in the refridgerator.
+- Take spoon out of drawer.
+- Put spoon into bowl of cereal.
 
+Release 0
+Using an elevator.
+For each floor you are assigned to visit:
 - Determine the floor you are currently on (the last floor assigned).
 - Use input to determine new floor assigned ("n" floor).
 - If the new assigned floor is less than current assigned floor, press "down" arrow button.
