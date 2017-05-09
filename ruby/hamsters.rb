@@ -7,12 +7,12 @@ fur_color = gets.chomp
 puts "Is the hamster a good candidate for adoption? Answer yes or no."
 adoption = gets.chomp
 if adoption == ""
-  adoption = "nil"
+  adoption = nil
 end
 puts "What is the hamster's age (approximately)?"
 age = gets.chomp.to_i
 if age == 0
-  age = "nil"
+  age = nil
 end
 puts "Thank you for registering this hamster."
 puts "Hamster name: #{hamster_name}"
