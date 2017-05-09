@@ -10,7 +10,7 @@ if adoption == ""
   adoption = "nil"
 end
 puts "What is the hamster's age (approximately)?"
-age = gets.chomp_to_i
+age = gets.chomp.to_i
 if age == ""
   age = "nil"
 end
