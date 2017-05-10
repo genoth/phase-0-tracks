@@ -19,3 +19,11 @@ end
 
 puts encrypt("string")
 
+
+# 2.
+# Takes an encrypted string as an argument
+# Use .index on a letter in our encrypted string
+# Take that index and apply it to the alphabet string
+# our "key" is the alphabet
+# decrypt by retracting by 1 letter for each character, using our key
+# returns the decrypted string
