@@ -19,5 +19,17 @@ end
 
 if age && (wants_bread || wants_insurance)
   result = "Probably not a vampire."
-  puts result
 end
+if !age && (!wants_bread || !wants_insurance)
+  result = "Probably a vampire!"
+end
+if !age && !wants_bread && !wants_insurance
+  result = "Almost certainly a vampire!"
+end
+if name == "Drake Cula"
+  result = "DEFINITELY a vampire."
+end
+if name == "Tu Fang"
+  result = "DEFINITELY a vampire."
+end
+puts result
