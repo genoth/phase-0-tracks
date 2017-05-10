@@ -18,11 +18,8 @@ def encrypt(string)
     end
     our_index = our_index + 1
   end
-  puts string
+  p string
 end
-
-p encrypt("string")
-
 
 # 2.
 # Takes an encrypted string as an argument
@@ -66,6 +63,12 @@ until method == "encrypt" || "decrypt"
   method = gets.chomp
 end
 puts "What word would you like to use?"
+  string = gets.chomp
+if method == "encrypt"
+  encrypt(string)
+else decrypt(string)
+end
+
 
 
 
