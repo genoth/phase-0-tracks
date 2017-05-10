@@ -9,12 +9,12 @@
 # Do the thing -
 # 1.
 def encrypt(string)
-  our_index=0
+  our_index = 0
   while our_index < string.length do
     if string[our_index] == "z"
-      string[our_index]=string[our_index].next!.chop
+      string[our_index] = string[our_index].next!.chop
     else
-      string[our_index]=string[our_index].next!
+      string[our_index] = string[our_index].next!
     end
     our_index = our_index + 1
   end
@@ -68,6 +68,7 @@ if method == "encrypt"
   encrypt(string)
 else decrypt(string)
 end
+puts "Thank you for using the cryptometer! Goodbye."
 
 
 
