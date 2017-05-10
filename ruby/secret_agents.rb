@@ -27,3 +27,15 @@ puts encrypt("string")
 # our "key" is the alphabet
 # decrypt by retracting by 1 letter for each character, using our key
 # returns the decrypted string
+
+def decrypt(tusjoh)
+  our_index = 0
+  key = "abcdefghijklmnopqrstuvwxyz"
+  while our_index < tusjoh.length do
+    tusjoh[our_index] = key[key.index(tusjoh[our_index]) - 1]
+    our_index = our_index + 1
+  end
+  puts tusjoh
+end
+
+decrypt("tusjoh")
