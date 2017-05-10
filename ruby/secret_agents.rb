@@ -11,7 +11,11 @@
 def encrypt(string)
   our_index=0
   while our_index < string.length do
-    string[our_index]=string[our_index].next!
+    if string[our_index] == "z"
+      string[our_index]=string[our_index].next!.chop
+    else
+      string[our_index]=string[our_index].next!
+    end
     our_index = our_index + 1
   end
   puts string
@@ -39,3 +43,8 @@ def decrypt(tusjoh)
 end
 
 decrypt("tusjoh")
+
+encrypt("abc")
+encrypt("zed")
+decrypt("bcd")
+decrypt("afe")
