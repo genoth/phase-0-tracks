@@ -21,7 +21,7 @@ def encrypt(string)
   puts string
 end
 
-puts encrypt("string")
+p encrypt("string")
 
 
 # 2.
@@ -39,7 +39,7 @@ def decrypt(tusjoh)
     tusjoh[our_index] = key[key.index(tusjoh[our_index]) - 1]
     our_index = our_index + 1
   end
-  puts tusjoh
+  p tusjoh
 end
 
 decrypt("tusjoh")
@@ -48,3 +48,6 @@ encrypt("abc")
 encrypt("zed")
 decrypt("bcd")
 decrypt("afe")
+
+decrypt(encrypt("swordfish"))
+# This nested method call works because it is asking to encrypt "swordfish." Encrypt returns a string that decrypt reads. The result is that the original string is returned.
