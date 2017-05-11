@@ -8,17 +8,17 @@
 
 # Do the thing -
 # 1.
-def encrypt(string)
-  our_index = 0
-  while our_index < string.length do
-    if string[our_index] == "z"
-      string[our_index] = string[our_index].next!.chop
+def encrypt(word)
+  iterator = 0
+  while iterator < word.length do
+    if word[iterator] == "z"
+      word[iterator] = word[iterator].next!.chop
     else
-      string[our_index] = string[our_index].next!
+      word[iterator] = word[iterator].next!
     end
-    our_index = our_index + 1
+    iterator = iterator + 1
   end
-  p string
+  p word
 end
 
 # 2.
@@ -29,14 +29,14 @@ end
 # decrypt by retracting by 1 letter for each character, using our key
 # returns the decrypted string
 
-def decrypt(string)
-  our_index = 0
+def decrypt(word)
+  iterator = 0
   key = "abcdefghijklmnopqrstuvwxyz"
-  while our_index < string.length do
-    string[our_index] = key[key.index(string[our_index]) - 1]
-    our_index = our_index + 1
+  while iterator < word.length do
+    word[iterator] = key[key.index(word[iterator]) - 1]
+    iterator = iterator + 1
   end
-  p string
+  p word
 end
 
 # decrypt("tusjoh")
