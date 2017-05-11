@@ -16,25 +16,34 @@ until employees_processed == employees
   if gets.chomp == "yes"
     wants_bread = true
   end
-  puts "Lastly, #{name}, would you like to enroll in the company's health insurance? Please answer yes or no."
+  puts "#{name}, would you like to enroll in the company's health insurance? Please answer yes or no."
   if gets.chomp == "yes"
     wants_insurance = true
   end
-
-  if age && (wants_bread || wants_insurance)
-    result = "Probably not a vampire."
+  allergies = ""
+  until allergies == "done" || allergies == "sunshine"
+    puts "Please name your allergies one at a time. When you are finished, type done. (If you have no allergies, you can just type done.)"
+    allergies = gets.chomp
   end
-  if !age && (!wants_bread || !wants_insurance)
+  if allergies == "sunshine"
+    allergies = "done"
     result = "Probably a vampire!"
-  end
-  if !age && !wants_bread && !wants_insurance
-    result = "Almost certainly a vampire!"
-  end
-  if name == "Drake Cula"
-    result = "DEFINITELY a vampire."
-  end
-  if name == "Tu Fang"
-    result = "DEFINITELY a vampire."
+  else
+    if age && (wants_bread || wants_insurance)
+      result = "Probably not a vampire."
+    end
+    if !age && (!wants_bread || !wants_insurance)
+      result = "Probably a vampire!"
+    end
+    if !age && !wants_bread && !wants_insurance
+      result = "Almost certainly a vampire!"
+    end
+    if name == "Drake Cula"
+      result = "DEFINITELY a vampire."
+    end
+    if name == "Tu Fang"
+      result = "DEFINITELY a vampire."
+    end
   end
   puts result
   employees_processed = employees_processed + 1
