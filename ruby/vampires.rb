@@ -23,7 +23,7 @@ until employees_processed == employees
   allergies = ""
   until allergies == "done" || allergies == "sunshine"
     puts "Please name your allergies one at a time. When you are finished, type done. (If you have no allergies, you can just type done.)"
-    allergies = gets.chomp
+    allergies = gets.chomp.downcase
   end
   if allergies == "sunshine"
     allergies = "done"
@@ -38,13 +38,14 @@ until employees_processed == employees
     if !age && !wants_bread && !wants_insurance
       result = "Almost certainly a vampire!"
     end
-    if name == "Drake Cula"
+    if name.downcase == "drake cula"
       result = "DEFINITELY a vampire."
     end
-    if name == "Tu Fang"
+    if name.downcase == "tu fang"
       result = "DEFINITELY a vampire."
     end
   end
   puts result
   employees_processed = employees_processed + 1
 end
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
