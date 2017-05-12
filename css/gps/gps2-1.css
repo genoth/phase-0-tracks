@@ -15,12 +15,10 @@ header {
   margin: auto;
 }
 .column-1 {
-  position: fixed;
   left: 0;
   width: 48%;
 }
 .column-2 {
-  position: fixed;
   right: 0;
   width: 48%;
 }
@@ -31,6 +29,7 @@ header {
   position: fixed;
   top: 25vh;
   bottom: 10vh;
+  margin: auto;
 }
 footer {
   width: 100%;
