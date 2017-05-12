@@ -13,11 +13,11 @@ until employees_processed == employees
     age = true
   end
   puts "#{name}, our company cafeteria serves garlic bread. Should we order some for you? Please answer yes or no."
-  if gets.chomp == "yes"
+  if gets.chomp.downcase == "yes"
     wants_bread = true
   end
   puts "#{name}, would you like to enroll in the company's health insurance? Please answer yes or no."
-  if gets.chomp == "yes"
+  if gets.chomp.downcase == "yes"
     wants_insurance = true
   end
   allergies = ""
