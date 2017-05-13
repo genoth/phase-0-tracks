@@ -8,17 +8,19 @@
 
 # Do the thing -
 # 1.
-def encrypt(string)
-  our_index = 0
-  while our_index < string.length do
-    if string[our_index] == "z"
-      string[our_index] = string[our_index].next!.chop
+def encrypt(word)
+  current_index = 0
+  while current_index < word.length do
+    if word[current_index] == "z"
+      word[current_index] = "a"
+    elsif word[current_index] == " "
+      word[current_index] = " "
     else
-      string[our_index] = string[our_index].next!
+      word[current_index] = word[current_index].next!
     end
-    our_index = our_index + 1
+    current_index = current_index + 1
   end
-  p string
+  p word
 end
 
 # 2.
@@ -29,14 +31,18 @@ end
 # decrypt by retracting by 1 letter for each character, using our key
 # returns the decrypted string
 
-def decrypt(string)
-  our_index = 0
+def decrypt(word)
+  current_index = 0
   key = "abcdefghijklmnopqrstuvwxyz"
-  while our_index < string.length do
-    string[our_index] = key[key.index(string[our_index]) - 1]
-    our_index = our_index + 1
+  while current_index < word.length do
+    letter = word[current_index]
+    location = key.index(letter)
+    if location != nil
+      word[current_index] = key[location - 1]
+    end
+    current_index = current_index + 1
   end
-  p string
+  p word
 end
 
 # decrypt("tusjoh")
@@ -48,7 +54,7 @@ end
 
 # decrypt(encrypt("swordfish"))
 # Release 4
-# This nested method call works because it is asking to encrypt "swordfish." Encrypt returns a string that decrypt reads. The result is that the original string is returned.
+# This nested method call works because it is asking to encrypt "swordfish." Encrypt returns a string that decrypt reads and decrypts. The result is that the original string is returned.
 
 # Release 5
 # Print question to ask user if they'd like to use the decrypt or encrypt method.
@@ -57,16 +63,16 @@ end
 # Perform the operation and print the result, then say thank you for using the cryptometer!
 
 puts "Hello Agent! Would you like to use the encrypt method, or the decrypt method? Please type encrypt or decrypt."
-method = gets.chomp
-until method == "encrypt" || "decrypt"
+method = gets.chomp.downcase
+until method == "encrypt" || method == "decrypt"
   puts "Invalid input. Please try again. Type either encrypt or decrypt."
-  method = gets.chomp
+  method = gets.chomp.downcase
 end
 puts "What word would you like to use?"
-  string = gets.chomp
+word = gets.chomp
 if method == "encrypt"
-  encrypt(string)
-else decrypt(string)
+  encrypt(word)
+else decrypt(word)
 end
 puts "Thank you for using the cryptometer! Goodbye."
 
