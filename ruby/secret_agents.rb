@@ -12,7 +12,9 @@ def encrypt(word)
   iterator = 0
   while iterator < word.length do
     if word[iterator] == "z"
-      word[iterator] = word[iterator].next!.chop
+      word[iterator] = "a"
+    elsif word[iterator] == " "
+      word[iterator] = " "
     else
       word[iterator] = word[iterator].next!
     end
@@ -33,7 +35,11 @@ def decrypt(word)
   iterator = 0
   key = "abcdefghijklmnopqrstuvwxyz"
   while iterator < word.length do
-    word[iterator] = key[key.index(word[iterator]) - 1]
+    letter = word[iterator]
+    location = key.index(letter)
+    if location != nil
+      word[iterator] = key[location - 1]
+    end
     iterator = iterator + 1
   end
   p word
@@ -48,7 +54,7 @@ end
 
 # decrypt(encrypt("swordfish"))
 # Release 4
-# This nested method call works because it is asking to encrypt "swordfish." Encrypt returns a string that decrypt reads. The result is that the original string is returned.
+# This nested method call works because it is asking to encrypt "swordfish." Encrypt returns a string that decrypt reads and decrypts. The result is that the original string is returned.
 
 # Release 5
 # Print question to ask user if they'd like to use the decrypt or encrypt method.
@@ -58,15 +64,15 @@ end
 
 puts "Hello Agent! Would you like to use the encrypt method, or the decrypt method? Please type encrypt or decrypt."
 method = gets.chomp
-until method == "encrypt" || "decrypt"
+until method == "encrypt" || method == "decrypt"
   puts "Invalid input. Please try again. Type either encrypt or decrypt."
   method = gets.chomp
 end
 puts "What word would you like to use?"
-  string = gets.chomp
+word = gets.chomp
 if method == "encrypt"
-  encrypt(string)
-else decrypt(string)
+  encrypt(word)
+else decrypt(word)
 end
 puts "Thank you for using the cryptometer! Goodbye."
 
