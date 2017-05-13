@@ -5,15 +5,16 @@ with 10 being loudest?"
 loudness = gets.chomp.to_i
 puts "What is the hamster's fur color?"
 fur_color = gets.chomp
-puts "Is the hamster a good candidate for adoption?
-Answer yes or no."
-adoption_candidate = gets.chomp
-if adoption_candidate.downcase == "yes"
+puts "Is the hamster a good candidate for adoption? Answer yes or no."
+adoption_candidate = gets.chomp.downcase
+until adoption_candidate == "yes" || adoption_candidate == "no"
+  puts "Invalid input. Please try again. Is the hamster a good candidate for adoption? Type either yes or no."
+  adoption_candidate = gets.chomp.downcase
+end
+if adoption_candidate == "yes"
   adoption_candidate = true
-elsif adoption_candidate.downcase == "no"
+elsif adoption_candidate == "no"
   adoption_candidate = false
-else
-  adoption_candidate = nil
 end
 puts "What is the hamster's age (approximately)?"
 age = gets.chomp.to_i
