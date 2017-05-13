@@ -9,16 +9,16 @@
 # Do the thing -
 # 1.
 def encrypt(word)
-  iterator = 0
-  while iterator < word.length do
-    if word[iterator] == "z"
-      word[iterator] = "a"
-    elsif word[iterator] == " "
-      word[iterator] = " "
+  current_index = 0
+  while current_index < word.length do
+    if word[current_index] == "z"
+      word[current_index] = "a"
+    elsif word[current_index] == " "
+      word[current_index] = " "
     else
-      word[iterator] = word[iterator].next!
+      word[current_index] = word[current_index].next!
     end
-    iterator = iterator + 1
+    current_index = current_index + 1
   end
   p word
 end
@@ -32,15 +32,15 @@ end
 # returns the decrypted string
 
 def decrypt(word)
-  iterator = 0
+  current_index = 0
   key = "abcdefghijklmnopqrstuvwxyz"
-  while iterator < word.length do
-    letter = word[iterator]
+  while current_index < word.length do
+    letter = word[current_index]
     location = key.index(letter)
     if location != nil
-      word[iterator] = key[location - 1]
+      word[current_index] = key[location - 1]
     end
-    iterator = iterator + 1
+    current_index = current_index + 1
   end
   p word
 end
@@ -63,10 +63,10 @@ end
 # Perform the operation and print the result, then say thank you for using the cryptometer!
 
 puts "Hello Agent! Would you like to use the encrypt method, or the decrypt method? Please type encrypt or decrypt."
-method = gets.chomp
+method = gets.chomp.downcase
 until method == "encrypt" || method == "decrypt"
   puts "Invalid input. Please try again. Type either encrypt or decrypt."
-  method = gets.chomp
+  method = gets.chomp.downcase
 end
 puts "What word would you like to use?"
 word = gets.chomp
