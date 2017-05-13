@@ -5,35 +5,19 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
 }
 header {
   width: 100%;
   text-align: center;
-  position: fixed;
-  top: 0;
-  margin: auto;
-}
-.column-1 {
-  left: 0;
-  width: 48%;
-}
-.column-2 {
-  right: 0;
-  width: 48%;
 }
 .column-1, .column-2 {
-  padding: 0% 1% 0% 1%;
-  height: 65vh;
+  padding: 0% 1% 1% 1%;
+  height: 80vh;
   overflow-y: scroll;
-  position: fixed;
-  top: 25vh;
-  bottom: 10vh;
-  margin: auto;
+  display: inline-block;
+  width: 47%;
 }
 footer {
   width: 100%;
-  position: fixed;
-  bottom: 0;
-  padding: 2px;
+  padding: 10px 2px;
 }
