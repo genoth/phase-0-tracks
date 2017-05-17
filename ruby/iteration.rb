@@ -57,11 +57,6 @@ p dinner_schedule
 
 # Array
 number_array = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
-number_array.delete_if {|number| number < 15}
-p "Item 1 array"
-p number_array
-
-# Hash
 number_hash = {
   1 => "odd",
   2 => "even",
@@ -79,6 +74,13 @@ number_hash = {
   14 => "even",
   15 => "odd"
 }
+puts "Original array is #{number_array}"
+puts "Original hash is #{number_hash}"
+number_array.delete_if {|number| number < 18}
+p "Item 1"
+p number_array
+
+# Hash
 number_hash.delete_if {|number, type| number < 3}
 p number_hash
 
@@ -87,6 +89,7 @@ p number_hash
 # Array
 # We will use the updated number_array
 number_array.keep_if {|number| number.even?}
+p "Item 2"
 p number_array
 
 # Hash
@@ -99,6 +102,7 @@ p number_hash
 # Array
 # selects only numbers divisible by 3
 number_array.select! {|number| number % 3 == 0}
+p "Item 3"
 p number_array
 
 # Hash
@@ -108,7 +112,8 @@ p number_hash
 #4)A method that will remove items from a data structure until the condition in the block evaluates to false, then stops (you may not find a perfectly working option for the hash, and that's okay).
 
 # Array
-number_array.drop_while {|number| number <= 25}
+number_array.delete_if {|number| number <= 25}
+p "Item 4"
 p number_array
 
 # Hash
