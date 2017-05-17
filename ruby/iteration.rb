@@ -52,9 +52,6 @@ puts "After the .each call, hash is:"
 p dinner_schedule
 
 ############ RELEASE 2 ###########
-
-#1 - A method that iterates through the items, deleting any that meet a certain condition (for example, deleting any numbers that are less than 5).
-
 # Array
 number_array = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
 number_hash = {
@@ -76,8 +73,10 @@ number_hash = {
 }
 puts "Original array is #{number_array}"
 puts "Original hash is #{number_hash}"
+
+#1 - A method that iterates through the items, deleting any that meet a certain condition (for example, deleting any numbers that are less than 5).
+
 number_array.delete_if {|number| number < 18}
-p "Item 1"
 p number_array
 
 # Hash
@@ -87,22 +86,17 @@ p number_hash
 #2 - A method that filters a data structure for only items that do satisfy a certain condition (for example, keeping any numbers that are less than 5).
 
 # Array
-# We will use the updated number_array
 number_array.keep_if {|number| number.even?}
-p "Item 2"
 p number_array
 
 # Hash
-# We will use the updated number_hash
 number_hash.keep_if {|number, type| type == "odd"}
 p number_hash
 
 #3 - A different method that filters a data structure for only items satisfying a certain condition -- Ruby offers several options!
 
 # Array
-# selects only numbers divisible by 3
 number_array.select! {|number| number % 3 == 0}
-p "Item 3"
 p number_array
 
 # Hash
@@ -112,10 +106,14 @@ p number_hash
 #4 - A method that will remove items from a data structure until the condition in the block evaluates to false, then stops (you may not find a perfectly working option for the hash, and that's okay).
 
 # Array
+# Removes items from array until condition evaluates as false, and then stops.
+# I created a new variable to store the resulting array.
 new_number_array = number_array.take_while {|number| number <= 25}
 p new_number_array
 
 # Hash
+# Removes items from hash until condition evaluates as false, and then stops.
+# I created a new variable to store the resulting hash.
 new_number_hash = number_hash.take_while {|number, type|number <= 8}
 p new_number_hash
 
