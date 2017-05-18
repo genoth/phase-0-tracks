@@ -76,6 +76,7 @@ puts "Original hash is #{number_hash}"
 
 #1 - A method that iterates through the items, deleting any that meet a certain condition (for example, deleting any numbers that are less than 5).
 
+# Array
 number_array.delete_if {|number| number < 18}
 p number_array
 
@@ -106,15 +107,13 @@ p number_hash
 #4 - A method that will remove items from a data structure until the condition in the block evaluates to false, then stops (you may not find a perfectly working option for the hash, and that's okay).
 
 # Array
-# Removes items from array until condition evaluates as false, and then stops.
 # I created a new variable to store the resulting array.
-new_number_array = number_array.take_while {|number| number <= 25}
+new_number_array = number_array.drop_while {|number| number <= 25}
 p new_number_array
 
 # Hash
-# Removes items from hash until condition evaluates as false, and then stops.
 # I created a new variable to store the resulting hash.
-new_number_hash = number_hash.take_while {|number, type|number <= 8}
+new_number_hash = number_hash.drop_while {|number, type|number <= 8}
 p new_number_hash
 
 
