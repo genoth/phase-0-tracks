@@ -1,14 +1,15 @@
-# Program for interior designer, to enter client details
-# Create hash client_details and assign keys.
-# Print question prompting info for a given key (e.g. "What is your client's name?", convert user response to new data type if needed, and store user response as value for (key, value) pair.
-# Repeat this process until all client details have been received.
+# Create a program for interior designer to enter basic info for a given client
+# Create hash client_details and assign keys with blank values.
+# Print question prompting info for a given key (e.g. "What is your client's name?"
+# Store user response as a value for the (key, value) pair, first converting user response to new data type if needed.
+# Repeat this process for each category of information.
 # Upon completion, print hash data for user review
 # Print question for user, "Would you like to make any changes? If no, type none. If yes, type the category to be corrected."
-# Use conditional - if none, end the program
-# If user enters category, convert it into a symbol (key)
-# Print question for user, what is the corrected value for this category?
-# Convert user input to symbol (value)
-# Print updated data using .each, and end program.
+# Use a conditional - if none, end the program
+# If user enters a category to correct, convert it into a symbol (key)
+  # Print question for user, what is the corrected data for this category?
+  # Convert user input to symbol and update stored data
+  # Print updated data using .each, and end program.
 
 client_details = {
   name: "",
@@ -40,8 +41,8 @@ elsif client_details[:wants_kitchen_remodel] == "no"
   client_details[:wants_kitchen_remodel] = false
 end
 puts "Thank you! Please review your data entry. You entered:"
-client_details.each do |key, value|
-  puts "#{key}: #{value}"
+client_details.each do |category, data|
+  puts "#{category}: #{data}"
 end
 puts "Would you like to make any changes? If no, enter none. If yes, please type the category to be corrected."
 category_to_correct = gets.chomp.to_sym
@@ -52,10 +53,10 @@ else
   corrected_data = gets.chomp.to_sym
   client_details[category_to_correct] = corrected_data
   puts "Thank you for the correction! Here is your updated data entry."
-  client_details.each do |key, value|
-    puts "#{key}: #{value}"
+  client_details.each do |category, data|
+    puts "#{category}: #{data}"
   end
-  puts "Goodbye!"
+  puts "Thank you for using the design client intake system. Goodbye!"
 end
 
 
