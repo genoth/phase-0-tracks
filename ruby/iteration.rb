@@ -46,10 +46,17 @@ p days_of_week
 puts "Exercise: Iterate through hash with .each. Original hash is:"
 p dinner_schedule
 
-dinner_schedule.each {|day, dinner| p "On #{day.upcase}, dinner will be #{dinner}."}
+dinner_schedule.each {|day, dinner| p "On #{day.capitalize}, dinner will be #{dinner}."}
 
 puts "After the .each call, hash is:"
 p dinner_schedule
+
+# iterate through hash with .map
+puts "Exercise: Iterate through hash with .map. Original hash is:"
+p dinner_schedule
+
+emphasized_dinner_schedule = dinner_schedule.map {|day, dinner| puts "On #{day.capitalize}, we will have #{dinner.upcase}!!!"}
+puts "After the .map call, hash is #{dinner_schedule}."
 
 ############ RELEASE 2 ###########
 # Array
