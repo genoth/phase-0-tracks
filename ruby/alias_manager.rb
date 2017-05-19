@@ -37,13 +37,13 @@ puts vowel_key.index("e")
 
 # puts vowel_encryptor("o")
 
-def letter_cryptometer(target_string)
-  target_string.each_index do |index|
+def letter_cryptometer(target_array)
+  target_array.each_index do |index|
     vowel_key = "aeiou".chars
     consonant_key = "abcdefghijklmnopqrstuvwxyz"
     consonant_key = consonant_key.delete("aeiou")
     consonant_key = consonant_key.chars
-    letter = target_string[index]
+    letter = target_array[index]
     if vowel_key.include?(letter)
       if vowel_key == "u"
         new_letter = "a"
@@ -64,17 +64,17 @@ def letter_cryptometer(target_string)
   end
 end
 
-p letter_cryptometer(["gwynne", "noth"])
 
 
 name_array = "Felicia Torres".downcase.split(' ').reverse
 name_array = name_array.insert(1, " ")
-p name_array
-puts "name array is #{name_array}"
-target_array = name_array.join.chars
-puts "target array is #{target_array}"
-new_name_array = letter_cryptometer(target_array)
-puts "new name array is #{new_name_array}"
+puts "name array is #{name_array} and has the class #{name_array.class}"
+example_array = name_array.join.chars
+puts "target array is #{example_array}"
+puts "target array has the class #{example_array.class}"
+new_array = letter_cryptometer(example_array)
+# can we turn the result into an array?
+# why is it also returning the original name_array letters???
 
 # run letter cryptometer on each item of the array
 # return new array of alias names ["vussit", "gimodoe"]
