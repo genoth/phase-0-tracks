@@ -21,6 +21,61 @@ puts vowel_key
 puts vowel_key[1]
 puts vowel_key.index("e")
 
-puts vowel_key.index(target[1])
-target.each do {|word| puts letter.index}
 
+# puts vowel_key.index(target[1])
+# target.each do {|word| puts letter.index}
+
+
+# if vowel_key.include?(target[1])
+#  location = vowel_key.index((target[1]))
+#  puts location
+# end
+
+# puts "Thank you for using the aliasinator! Tell us your name and we'll find you an alias."
+
+
+
+# puts vowel_encryptor("o")
+
+def letter_cryptometer(target_string)
+  target_string.each_index do |index|
+    vowel_key = "aeiou".chars
+    consonant_key = "abcdefghijklmnopqrstuvwxyz"
+    consonant_key = consonant_key.delete("aeiou")
+    consonant_key = consonant_key.chars
+    letter = target_string[index]
+    if vowel_key.include?(letter)
+      if vowel_key == "u"
+        new_letter = "a"
+      else
+        location = vowel_key.index(letter)
+        new_letter = vowel_key[location + 1]
+      end
+    elsif consonant_key.include?(letter)
+      if consonant_key == "z"
+        new_letter = "b"
+      else
+        location = consonant_key.index(letter)
+        new_letter = consonant_key[location + 1]
+      end
+    else new_letter = " "
+    end
+  p new_letter
+  end
+end
+
+p letter_cryptometer(["gwynne", "noth"])
+
+
+name_array = "Felicia Torres".downcase.split(' ').reverse
+name_array = name_array.insert(1, " ")
+p name_array
+puts "name array is #{name_array}"
+target_array = name_array.join.chars
+puts "target array is #{target_array}"
+new_name_array = letter_cryptometer(target_array)
+puts "new name array is #{new_name_array}"
+
+# run letter cryptometer on each item of the array
+# return new array of alias names ["vussit", "gimodoe"]
+# print array items as strings with spaces in between, and capitalize
