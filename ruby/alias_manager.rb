@@ -17,9 +17,9 @@ consonant_key = consonant_key.chars
 vowel_key = "aeiou".chars
 # => ["a", "e", "i", "o", "u"]
 
-puts vowel_key
-puts vowel_key[1]
-puts vowel_key.index("e")
+# puts vowel_key
+# puts vowel_key[1]
+# puts vowel_key.index("e")
 
 
 # puts vowel_key.index(target[1])
@@ -34,8 +34,26 @@ puts vowel_key.index("e")
 # puts "Thank you for using the aliasinator! Tell us your name and we'll find you an alias."
 
 
-
 # puts vowel_encryptor("o")
+
+def vowel_encryptor(vowel)
+  vowel_key = "aeiou".chars
+  letter = vowel
+  location = vowel_key.index(letter)
+  new_letter = vowel_key[location + 1]
+end
+
+def consonant_encryptor(consonant)
+  consonant_key = "abcdefghijklmnopqrstuvwxyz"
+  consonant_key = consonant_key.delete("aeiou")
+  consonant_key = consonant_key.chars
+  letter = consonant
+  location = consonant_key.index(letter)
+  new_letter = consonant_key[location + 1]
+end
+
+puts vowel_encryptor("i")
+puts consonant_encryptor("g")
 
 def letter_cryptometer(target_array)
   target_array.each_index do |index|
@@ -73,8 +91,18 @@ example_array = name_array.join.chars
 puts "target array is #{example_array}"
 puts "target array has the class #{example_array.class}"
 new_array = letter_cryptometer(example_array)
+
+target_array = ["hello", "goodbye", "hi there"]
+
+target_array.each_index do |index|
+  puts target_array[index]
+end
+
+target_array.each_index do |index|
+  puts target_array.index("hello")
+end
+
 # can we turn the result into an array?
-# why is it also returning the original name_array letters???
 
 # run letter cryptometer on each item of the array
 # return new array of alias names ["vussit", "gimodoe"]
