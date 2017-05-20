@@ -40,20 +40,21 @@ p fib(8)
 # Repeat the process until 1st < 2nd < 3rd < 4th is true
 
 def run_pass(input)
+  corrections_made = false
   (input.length - 1).times do |index|
     if input[index] > input[index + 1]
+      corrections_made = true
       val_0 = input[index +1]
       val_1 = input[index]
       input[index] = val_0
       input[index + 1] = val_1
     end
   end
+  return corrections_made
 end
 
 def bubble_sort(input)
-  until input == input.sort
-    run_pass(input)
-    p input
+  until run_pass(input) == false
   end
   return input
 end
