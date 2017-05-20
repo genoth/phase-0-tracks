@@ -36,71 +36,62 @@ vowel_key = "aeiou".chars
 
 # puts vowel_encryptor("o")
 
-def vowel_encryptor(vowel)
+
+def letter_array(name)
+  names_swapped = name.downcase.split(' ').reverse
+  spaces_to_add = (names_swapped.length - 1)
+  names_swapped = names_swapped.insert(spaces_to_add, " ")
+  array_of_chars = names_swapped.join.chars
+end
+
+def letter_encryptor(name)
+  target_array = letter_array(name)
   vowel_key = "aeiou".chars
-  letter = vowel
-  location = vowel_key.index(letter)
-  new_letter = vowel_key[location + 1]
-end
-
-def consonant_encryptor(consonant)
-  consonant_key = "abcdefghijklmnopqrstuvwxyz"
-  consonant_key = consonant_key.delete("aeiou")
-  consonant_key = consonant_key.chars
-  letter = consonant
-  location = consonant_key.index(letter)
-  new_letter = consonant_key[location + 1]
-end
-
-puts vowel_encryptor("i")
-puts consonant_encryptor("g")
-
-def letter_cryptometer(target_array)
-  target_array.each_index do |index|
-    vowel_key = "aeiou".chars
     consonant_key = "abcdefghijklmnopqrstuvwxyz"
     consonant_key = consonant_key.delete("aeiou")
     consonant_key = consonant_key.chars
-    letter = target_array[index]
-    if vowel_key.include?(letter)
-      if vowel_key == "u"
-        new_letter = "a"
-      else
-        location = vowel_key.index(letter)
-        new_letter = vowel_key[location + 1]
+    target_array.map! do |letter|
+      if vowel_key.include?(letter)
+        if vowel_key == "u"
+          new_letter = "a"
+        else
+          location = vowel_key.index(letter)
+          new_letter = vowel_key[location + 1]
+        end
+      elsif consonant_key.include?(letter)
+        if consonant_key == "z"
+          new_letter = "b"
+        else
+          location = consonant_key.index(letter)
+          new_letter = consonant_key[location + 1]
+        end
+      else new_letter = " "
       end
-    elsif consonant_key.include?(letter)
-      if consonant_key == "z"
-        new_letter = "b"
-      else
-        location = consonant_key.index(letter)
-        new_letter = consonant_key[location + 1]
-      end
-    else new_letter = " "
     end
-  p new_letter
+end
+
+def aliasinator(name)
+  array = letter_encryptor(name)
+  string = array.join
+  separated_names = string.split(' ')
+  separated_names.map! do |item|
+    item.to_s.capitalize
   end
+  separated_names.map! do |item|
+    item.insert(0, " ")
+  end
+  def join_items(item)
+    item.join
+  end
+  item = separated_names
+  output = join_items(item)
+  output = output.slice(1,output.length)
 end
 
+p aliasinator("Felicia Torres")
 
 
-name_array = "Felicia Torres".downcase.split(' ').reverse
-name_array = name_array.insert(1, " ")
-puts "name array is #{name_array} and has the class #{name_array.class}"
-example_array = name_array.join.chars
-puts "target array is #{example_array}"
-puts "target array has the class #{example_array.class}"
-new_array = letter_cryptometer(example_array)
 
-target_array = ["hello", "goodbye", "hi there"]
-
-target_array.each_index do |index|
-  puts target_array[index]
-end
-
-target_array.each_index do |index|
-  puts target_array.index("hello")
-end
 
 # can we turn the result into an array?
 
