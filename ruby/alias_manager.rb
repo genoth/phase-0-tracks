@@ -33,10 +33,6 @@ vowel_key = "aeiou".chars
 
 # puts "Thank you for using the aliasinator! Tell us your name and we'll find you an alias."
 
-
-# puts vowel_encryptor("o")
-
-
 def letter_array(name)
   names_swapped = name.downcase.split(' ').reverse
   spaces_to_add = (names_swapped.length - 1)
@@ -80,11 +76,7 @@ def aliasinator(name)
   separated_names.map! do |item|
     item.insert(0, " ")
   end
-  def join_items(item)
-    item.join
-  end
-  item = separated_names
-  output = join_items(item)
+  output = separated_names.join
   output = output.slice(1,output.length)
 end
 
