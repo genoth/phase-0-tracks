@@ -75,11 +75,13 @@ p return_function(array_list, particular_string)
 zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars", "shotgun", "compass", "CB radio", "batteries"]
 input = zombie_apocalypse_supplies
 
+output = []
 input.each do |item|
   if input.index(item) < 5
-    p item
+    output << item
   end
 end
+p output
 
 # 5. You found another survivor! This means you can combine your supplies.
 # Create a new combined supplies list out of your zombie_apocalypse_supplies
@@ -88,31 +90,35 @@ end
 # documentation for Arrays.
 # other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove","solar battery", "flashlight"]
 # ----
-
 zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars", "shotgun", "compass", "CB radio", "batteries"]
-
 other_survivor_supplies = ["warm clothes", "rations", "compass", "camp stove","solar battery", "flashlight"]
 
 other_survivor_supplies.each do |item|
   zombie_apocalypse_supplies << item
 end
-p zombie_apocalypse_supplies.uniq!
+
+p zombie_apocalypse_supplies
 
 # Hash Drills
 
-# extinct_animals = {
-#   "Tasmanian Tiger" => 1936,
-#   "Eastern Hare Wallaby" => 1890,
-#   "Dodo" => 1662,
-#   "Pyrenean Ibex" => 2000,
-#   "Passenger Pigeon" => 1914,
-#   "West African Black Rhinoceros" => 2011,
-#   "Laysan Crake" => 1923
-# }
+extinct_animals = {
+  "Tasmanian Tiger" => 1936,
+  "Eastern Hare Wallaby" => 1890,
+  "Dodo" => 1662,
+  "Pyrenean Ibex" => 2000,
+  "Passenger Pigeon" => 1914,
+  "West African Black Rhinoceros" => 2011,
+  "Laysan Crake" => 1923
+}
 
 # 1. Iterate through extinct_animals hash, printing each key/value pair
 # with a dash in between the key and value, and an asterisk between each pair.
 # ----
+output = []
+extinct_animals.each do |key, value|
+  output << "#{key} - #{value}"
+end
+puts output.join(' * ')
 
 # 2. Keep only animals in extinct_animals if they were extinct before
 # the year 2000. Do not use any special built-in methods.
