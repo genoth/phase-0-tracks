@@ -12,7 +12,12 @@ end
 # 2. In order to keep yourself organized, sort your zombie_apocalypse_supplies
 # in alphabetical order. Do not use any special built-in methods.
 # ----
+
+
 def runs_pass(input)
+  input.map! do |item|
+  item.downcase
+  end
   corrections_made = false
   (input.length - 1).times do |index|
     if input[index] > input[index+1]
