@@ -54,7 +54,9 @@ def aliasinator(name)
 end
 
 puts "Hello! Welcome to the aliasinator. Please enter a name and we'll give you an alias!"
+name_hash = {}
 name = gets.chomp
+name_hash[name: aliasinator(name)]
 puts "Your alias for #{name} is #{aliasinator(name)}. Press any key to continue using the aliasinator. If you're done, just type quit."
 while gets.chomp != "quit"
   puts "Please enter a name and we'll give you an alias!"
