@@ -67,11 +67,19 @@ array_list = zombie_apocalypse_supplies
 particular_string = "batteries"
 p return_function(array_list, particular_string)
 
-
 # 4. You can't carry too many things, you've only got room in your pack for 5.
 # Remove items in your zombie_apocalypse_supplies in any way you'd like,
 # leaving only 5. Do not use any special built-in methods.
 # ----
+
+zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars", "shotgun", "compass", "CB radio", "batteries"]
+input = zombie_apocalypse_supplies
+
+input.each do |item|
+  if input.index(item) < 5
+    p item
+  end
+end
 
 # 5. You found another survivor! This means you can combine your supplies.
 # Create a new combined supplies list out of your zombie_apocalypse_supplies
