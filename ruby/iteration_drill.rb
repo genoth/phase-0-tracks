@@ -45,6 +45,28 @@ p bubble_sort(input)
 # zombie_apocalypse_supplies. Do not use any special built-in methods.
 # For instance: are boots in your list of supplies?
 # ----
+# Define a method that iterates over an array, and checks if each item is equal to a particular string. Returns true if the item exists in the array, or false if it does not.
+
+def search_array(array_list, particular_string)
+  array_list.each do |item|
+    if item == particular_string
+      return true
+    end
+  end
+end
+
+def return_function(array_list, particular_string)
+  if search_array(array_list, particular_string) == true
+    return true
+  else return false
+  end
+end
+
+zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars", "shotgun", "compass", "CB radio", "batteries"]
+array_list = zombie_apocalypse_supplies
+particular_string = "batteries"
+p return_function(array_list, particular_string)
+
 
 # 4. You can't carry too many things, you've only got room in your pack for 5.
 # Remove items in your zombie_apocalypse_supplies in any way you'd like,
