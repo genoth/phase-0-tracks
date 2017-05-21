@@ -89,6 +89,15 @@ end
 # other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove","solar battery", "flashlight"]
 # ----
 
+zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars", "shotgun", "compass", "CB radio", "batteries"]
+
+other_survivor_supplies = ["warm clothes", "rations", "compass", "camp stove","solar battery", "flashlight"]
+
+other_survivor_supplies.each do |item|
+  zombie_apocalypse_supplies << item
+end
+p zombie_apocalypse_supplies.uniq!
+
 # Hash Drills
 
 # extinct_animals = {
