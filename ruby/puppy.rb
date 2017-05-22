@@ -22,6 +22,6 @@
 class Puppy
 end
 
-duchess = puppy.new
-spot = puppy.new
-fido = puppy.new
+duchess = Puppy.new
+spot = Puppy.new
+fido = Puppy.new
