@@ -136,7 +136,11 @@ p output
 # so they accurately reflect what year the animal went extinct.
 # Do not use any special built-in methods.
 # ----
-
+output = {}
+extinct_animals.each do |key, value|
+  output[key] = value - 3
+end
+p output
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
 # Check if they're included in extinct_animals, one by one:
@@ -145,9 +149,50 @@ p output
 # "Saiga Antelope"
 # Do not use any special built-in methods.
 # ----
+puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+# Use .each function to iterate through the array of animals to check, extinct animals hash and check if each key is equal to the input
+
+animals_to_check = ["Andean Cat", "Dodo", "Saiga Antelope"]
+
+animals_to_check.each do |animal_in_question|
+  is_extinct = false
+  extinct_animals.each do |extinct_animal, _|
+    if extinct_animal == animal_in_question
+      is_extinct = true
+    end
+  end
+  if is_extinct
+    puts "#{animal_in_question} is extinct"
+  else
+    puts "#{animal_in_question} is NOT extinct"
+  end
+end
 
 # 5. We just found out that the Passenger Pigeon is actually not extinct!
 # Remove them from extinct_animals and return the key value pair as a two item array.
 # Find the built-in method that helps you accomplish this in the Ruby documentation
 # for Hashes.
 # ----
+
+extinct_animals = {
+  "Tasmanian Tiger" => 1936,
+  "Eastern Hare Wallaby" => 1890,
+  "Dodo" => 1662,
+  "Pyrenean Ibex" => 2000,
+  "Passenger Pigeon" => 1914,
+  "West African Black Rhinoceros" => 2011,
+  "Laysan Crake" => 1923
+}
+# isolates "Passenger Pigeon" key, value and returns as array
+array = extinct_animals.select do |key, value|
+  key == "Passenger Pigeon"
+end
+p array.to_a.flatten
+
+# removes "Passenger Pigeon" key, value and returns the updated hash
+extinct_animals.delete_if {|key| key == "Passenger Pigeon"}
+p extinct_animals
+
+
+
