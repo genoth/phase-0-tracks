@@ -46,20 +46,24 @@ class Kittens
 
   def meow(num)
     num.times do
-      p "#{@name} says Meow!"
+      puts "#{@name} says Meow!"
     end
   end
 
   def jump
-    p "#{@name} jumps all over the place!"
+    puts "#{@name} is jumping all over the place!"
+  end
+
+  def climb
+    puts "#{@name} just climbed a tree. Oh no!"
+  end
+
+  def best_ever
+    puts "#{@name} is super awesome."
   end
 end
 
 # while Kitten instances is less than 50 create a new instance of Kitten starting with Kitten1 and going up.
-
-Don = Kittens.new("Don")
-Don.meow(3)
-Don.jump
 
 def name_generator(name, number)
   i = 1
@@ -71,6 +75,7 @@ def name_generator(name, number)
   end
   return name_array
 end
+
 kitten_names = name_generator("kitty", 50)
 
 kitten_collection = []
@@ -83,8 +88,15 @@ kitten_names.each do |name|
   puts "----"
 end
 
+
+# DRIVER CODE
+
+Don = Kittens.new("Don")
+Don.meow(3)
+Don.jump
+
 kitten_collection.each do |kitten|
-  p "#{kitten} is the best kitty ever!"
+  kitten.best_ever
 end
 
 
