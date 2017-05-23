@@ -39,52 +39,43 @@
 # fido.wag_tail()
 
 class Kittens
-  def initialize
+  def initialize(name)
+    @name = name
     p "Initializing new kitten instance"
   end
 
-  def meow(num)
+  def meow(num, name)
     num.times do
-      p "Meow!"
+      p "#{name} says Meow!"
     end
   end
 end
 
-don = Kittens.new
-
-don.meow(5)
-
-p don.class
-
-
-
-
 # while Kitten instances is less than 50 create a new instance of Kitten starting with Kitten1 and going up.
 
-def create_kitten(name, number)
-  kitten_hash = {}
-  namenumber = Kittens.new
-  kitten_hash[namenumber].push
+kitten = Kittens.new("Don Draper")
+
+def name_generator(name, number)
+  i = 0
+  name_array = []
+  while i < number + 1
+    kitten_name = name + i.to_s
+    i = i + 1
+    name_array << kitten_name
+  end
+  return name_array
 end
 
-kittens_created = 1
-while kittens_created < 10
-  create_kitten("kitty", kittens_created.to_s)
-  kittens_created = kittens_created + 1
+def create_kittens(name, number)
+  kittens_created = 0
+  kitten_array = []
+  until kittens_created == number
+    kitten = Kittens.new((name_generator(name, number)[kittens_created + 1]))
+    kitten_array << kitten
+    kittens_created = kittens_created + 1
+  end
+  return kitten_array
 end
 
-kitten_hash.map do |kitten|
-  kitten.meow(3)
-  puts "#{kitten} is noisy!"
-end
-
-puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-
-
-
-# def new_kitten_names(name)
-#   puts name + 1.to_s
-# end
-
-# p new_kitten_names("harold")
+p create_kittens("kitty", 10)
 
