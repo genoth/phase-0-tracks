@@ -44,19 +44,25 @@ class Kittens
     p "Initializing new kitten instance"
   end
 
-  def meow(num, name)
+  def meow(num)
     num.times do
-      p "#{name} says Meow!"
+      p "#{@name} says Meow!"
     end
+  end
+
+  def jump
+    p "#{@name} jumps all over the place!"
   end
 end
 
 # while Kitten instances is less than 50 create a new instance of Kitten starting with Kitten1 and going up.
 
-kitten = Kittens.new("Don Draper")
+Don = Kittens.new("Don")
+Don.meow(3)
+Don.jump
 
 def name_generator(name, number)
-  i = 0
+  i = 1
   name_array = []
   while i < number + 1
     kitten_name = name + i.to_s
@@ -65,17 +71,21 @@ def name_generator(name, number)
   end
   return name_array
 end
+kitten_names = name_generator("kitty", 50)
 
-def create_kittens(name, number)
-  kittens_created = 0
-  kitten_array = []
-  until kittens_created == number
-    kitten = Kittens.new((name_generator(name, number)[kittens_created + 1]))
-    kitten_array << kitten
-    kittens_created = kittens_created + 1
-  end
-  return kitten_array
+kitten_collection = []
+
+puts "Iterating through names list to create kittens"
+kitten_names.each do |name|
+  puts "Creating a kitten named #{name} ..."
+  kitten_collection << Kittens.new(name)
+  puts "There are now #{kitten_collection.length} kitten instances in the array"
+  puts "----"
 end
 
-p create_kittens("kitty", 10)
+kitten_collection.each do |kitten|
+  p "#{kitten} is the best kitty ever!"
+end
+
+
 
