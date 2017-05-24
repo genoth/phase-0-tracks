@@ -9,15 +9,45 @@ class Santa
     @age = 0
     puts "Initializing Santa instance..."
   end
+
   def speak
     puts "Ho, ho, ho! Haaaaapy holidays!"
   end
+
   def eat_milk_and_cookies(cookie)
     puts "That was a good #{cookie}!"
   end
+
   def excited_for_santacon
     puts "#{@name} is excited for Santacon!"
   end
+
+  # GETTER methods - make the data readable outside the class
+  def name
+    @name
+  end
+
+  def gender
+    @gender
+  end
+
+  def ethnicity
+    @ethnicity
+  end
+
+  def age
+    @age
+  end
+
+  # SETTER methods - make the data writable outside the class
+  def name=(new_name)
+    @name = new_name
+  end
+
+  def celebrate_birthday
+    @age = @age + 1
+  end
+
 end
 
 # DRIVER CODE
@@ -45,10 +75,36 @@ i = 0
   i = i + 1
 end
 
-p santas
-
+# Iterate through santas
 santas.each do |santa|
   santa.excited_for_santacon
 end
+
+# Use SETTER method
+santas[0].name = "The Santa formerly known as Anna"
+
+# Iterate through santas again
+santas.each do |santa|
+  santa.excited_for_santacon
+end
+
+#
+
+
+# NOTES
+# Attributes only exist INSIDE the class
+# Only methods declared inside the class can access attributes!!!
+# Provide an interface between the class and the program outside the class to make that data available to the outside world
+# GETTER methods wrap around a piece of data, and return that data
+    # ex.
+    # def name
+    #   @ name
+    # end
+# SETTER methods allow you to set new values for an attribute from outside the class, i.e. make it writable from outside the class
+    # ex.
+    # def name=(new_name)
+    #   @name = new_name
+    # end
+
 
 
