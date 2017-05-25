@@ -8,7 +8,7 @@ class Santa
     @gender = gender
     @ethnicity = ethnicity
     @reindeer_preference = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-    @age = 0
+    @age = rand(140)
     puts "Initializing Santa instance..."
   end
 
@@ -24,7 +24,8 @@ class Santa
     puts "#{@name} is excited for Santacon!"
   end
 
-  # # GETTER methods - make the data readable outside the class
+  ###### GETTER methods (make the data readable outside the class)
+  ###### Commented out after refactoring with attr_reader & attr_accessor
   # def name
   #   @name
   # end
@@ -41,7 +42,8 @@ class Santa
   #   @age
   # end
 
-  # # SETTER methods - make the data writable outside the class
+  ###### SETTER methods (make the data writable outside the class)
+   ###### Commented out after refactoring with attr_reader & attr_accessor
   # def changed_name=(new_name)
   #   @name = new_name
   # end
@@ -66,25 +68,17 @@ mall_santa = Santa.new("Marge", "prefer not to say", "prefer not to say")
 mall_santa.speak
 mall_santa.eat_milk_and_cookies("sugar cookie")
 
-# santas = []
-# santas << Santa.new("Anna", "agender", "black")
-# santas << Santa.new("Bella", "female", "Latina")
-# santas << Santa.new("Charlie", "bigender", "white")
-# santas << Santa.new("Dennis", "male", "Japanese")
-# santas << Santa.new("Emily", "female", "prefer not to say")
-# santas << Santa.new("Fareed", "gender fluid", "Mystical Creature")
-# santas << Santa.new("Genevieve", "N/A", "N/A")
-
 santas = []
-example_names = ["Anna", "Bella", "Charlie", "Dennis", "Emily", "Fareed", "Genevieve"]
+example_names = ["Anna", "Bella", "Charlie", "Dennis", "Emily", "Fareed", "Genevieve", "Jules", "Elina", "Merlin", "Boyce", "Kasi", "Zona", "Teodoro", "Phil", "Fidelia", "Iona", "Tynisha", "Zachery", "Tamika", "Kindra", "Gala", "Ivy", "Trish"]
 example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
-example_ethnicities = ["black", "Latina", "white", "Japanese", "prefer not to say", "Mystical Creature", "N/A"]
+example_ethnicities = ["black", "Native American", "Irish", "biracial", "Thai", "South African", "Latinx", "white", "Japanese", "prefer not to say", "Mystical Creature", "N/A"]
 
 i = 0
 7.times do
   santas << Santa.new(example_names[i], example_genders[i], example_ethnicities[i])
   i = i + 1
 end
+p santas
 
 # Iterate through santas
 santas.each do |santa|
@@ -98,13 +92,18 @@ p santas[0].age
 santas[0].get_mad_at("Dasher")
 santas[0].gender = "transgender"
 
-# Iterate through santas again
-santas.each do |santa|
+# Iterate through santas using attributes
+santas.each do |santa |
+  puts "#{santa} is #{santa.name}. #{santa.name} is #{santa.ethnicity} and identifies as #{santa.gender}. #{santa.name} is #{santa.age} years old."
   santa.excited_for_santacon
 end
 
-#
-p santas
-
-
+################## RELEASE 4 #####################
+100.times do
+  santas << Santa.new(example_names.sample, example_genders.sample, example_ethnicities.sample)
+end
+santas.each do |santa |
+  puts "#{santa} is #{santa.name}. #{santa.name} is #{santa.ethnicity} and identifies as #{santa.gender}. #{santa.name} is #{santa.age} years old."
+  santa.excited_for_santacon
+end
 
