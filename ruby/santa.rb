@@ -40,13 +40,24 @@ class Santa
   end
 
   # SETTER methods - make the data writable outside the class
-  def name=(new_name)
+  def changed_name=(new_name)
     @name = new_name
   end
 
-  def celebrate_birthday
+  def celebrate_birthday()
     @age = @age + 1
+    puts "#{@name} is now #{@age}!"
   end
+
+  def get_mad_at(reindeer)
+    @reindeer_preference.delete(reindeer)
+    @reindeer_preference.insert(-1, reindeer)
+  end
+
+  def update_gender(updated_gender)
+    @gender = updated_gender
+  end
+
 
 end
 
@@ -81,7 +92,11 @@ santas.each do |santa|
 end
 
 # Use SETTER method
-santas[0].name = "The Santa formerly known as Anna"
+santas[0].changed_name = "The Santa formerly known as Anna"
+santas[0].celebrate_birthday
+p santas[0].age
+santas[0].get_mad_at("Dasher")
+santas[0].update_gender("transgender")
 
 # Iterate through santas again
 santas.each do |santa|
@@ -89,6 +104,7 @@ santas.each do |santa|
 end
 
 #
+p santas
 
 
 # NOTES
