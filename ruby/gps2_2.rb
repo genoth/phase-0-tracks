@@ -31,33 +31,50 @@ def make_list(grocs)
   groceries = grocs.split(' ')
   grocery_list = {}
   groceries.each { |x| grocery_list[x] = "" }
-  p grocery_list
+  grocery_list
 end
 
 def add_item(list, groc)
   list[groc] = ""
-  p list
+  list
 end
 
 def delete_item(list, groc)
-  list.delete(groc)
-  p list
+  if list.include?(groc)
+    list.delete(groc)
+  else puts "#{groc.capitalize} is not on your list. Please try again."
+  end
+  list
 end
 
 def update_quantity(list, groc, quant)
-  list[groc] = quant.to_i
-  p list
+  if list.include?(groc)
+    list[groc] = quant.to_i
+  else puts "#{groc.capitalize} is not on your list. Please try again."
+  end
+  list
 end
 
 def print_list(list)
   list.each { |groc, quant| puts "We have to buy #{quant} #{groc}."}
 end
 
+
 grocery_list = make_list("carrots apples chickens pizzas")
 add_item(grocery_list, 'chocolates')
-delete_item(grocery_list, 'carrots')
+delete_item(grocery_list, 'bananas')
+update_quantity(grocery_list, 'potatoes', 8)
 update_quantity(grocery_list, 'pizzas', 8)
 update_quantity(grocery_list, 'apples', 5)
 update_quantity(grocery_list, 'chickens', 2)
 update_quantity(grocery_list, 'chocolates', 75)
 print_list(grocery_list)
+
+ grocery_list = make_list('lemonade tomatoes onions ice-cream')
+ update_quantity(grocery_list, 'lemonade', 2)
+ update_quantity(grocery_list, 'tomatoes', 3)
+ update_quantity(grocery_list, 'onions', 1)
+ update_quantity(grocery_list, 'ice-cream', 4)
+ delete_item(grocery_list, 'lemonade')
+ update_quantity(grocery_list, 'ice-cream', 1)
+ print_list(grocery_list)
