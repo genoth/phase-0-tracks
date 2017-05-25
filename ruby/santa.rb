@@ -1,4 +1,6 @@
 class Santa
+  attr_reader :ethnicity
+  attr_accessor :name, :gender, :reindeer_preference, :age
 
   def initialize(name, gender, ethnicity)
     #initialize method runs any time we call .new on the reindeer class!
@@ -22,27 +24,27 @@ class Santa
     puts "#{@name} is excited for Santacon!"
   end
 
-  # GETTER methods - make the data readable outside the class
-  def name
-    @name
-  end
+  # # GETTER methods - make the data readable outside the class
+  # def name
+  #   @name
+  # end
 
-  def gender
-    @gender
-  end
+  # def gender
+  #   @gender
+  # end
 
-  def ethnicity
-    @ethnicity
-  end
+  # def ethnicity
+  #   @ethnicity
+  # end
 
-  def age
-    @age
-  end
+  # def age
+  #   @age
+  # end
 
-  # SETTER methods - make the data writable outside the class
-  def changed_name=(new_name)
-    @name = new_name
-  end
+  # # SETTER methods - make the data writable outside the class
+  # def changed_name=(new_name)
+  #   @name = new_name
+  # end
 
   def celebrate_birthday()
     @age = @age + 1
@@ -54,11 +56,9 @@ class Santa
     @reindeer_preference.insert(-1, reindeer)
   end
 
-  def update_gender(updated_gender)
-    @gender = updated_gender
-  end
-
-
+  # def update_gender(updated_gender)
+  #   @gender = updated_gender
+  # end
 end
 
 # DRIVER CODE
@@ -92,11 +92,11 @@ santas.each do |santa|
 end
 
 # Use SETTER method
-santas[0].changed_name = "The Santa formerly known as Anna"
+santas[0].name = "The Santa formerly known as Anna"
 santas[0].celebrate_birthday
 p santas[0].age
 santas[0].get_mad_at("Dasher")
-santas[0].update_gender("transgender")
+santas[0].gender = "transgender"
 
 # Iterate through santas again
 santas.each do |santa|
@@ -105,22 +105,6 @@ end
 
 #
 p santas
-
-
-# NOTES
-# Attributes only exist INSIDE the class
-# Only methods declared inside the class can access attributes!!!
-# Provide an interface between the class and the program outside the class to make that data available to the outside world
-# GETTER methods wrap around a piece of data, and return that data
-    # ex.
-    # def name
-    #   @ name
-    # end
-# SETTER methods allow you to set new values for an attribute from outside the class, i.e. make it writable from outside the class
-    # ex.
-    # def name=(new_name)
-    #   @name = new_name
-    # end
 
 
 
