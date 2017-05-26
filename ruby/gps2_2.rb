@@ -78,3 +78,18 @@ print_list(grocery_list)
  delete_item(grocery_list, 'lemonade')
  update_quantity(grocery_list, 'ice-cream', 1)
  print_list(grocery_list)
+
+
+## Release 4 - Reflect
+# What did you learn about pseudocode from working on this challenge?
+    # I learned that spending time to write good pseudocode can make the rest of the process much easier.
+# What are the tradeoffs of using arrays and hashes for this challenge?
+    # Using an array for this challenge would make it difficult to store the quantities. For this reason, we chose to use a hash to store the items and quantities. The tradeoff here is that I'm not as confident with hashes yet so they are a little more difficult for me to manipulate.
+# What does a method return?
+    # Ruby methods return the last line of the expression, unless and explicit return comes before it (using the return keyword).
+# What kind of things can you pass into methods as arguments?
+    # All kinds of things! In this challenge we passed hashes, keys, and values into methods as arguments.
+# How can you pass information between methods?
+    # You can pass information between methods using arguments.
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+    # This challenge helped solidify the use of block code using the curly brackets. Normally I just use multi-line code for block code. I'm still a bit unclear about the question above, passing information between methods.
