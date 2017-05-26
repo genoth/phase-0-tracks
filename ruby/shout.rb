@@ -30,11 +30,11 @@ class Band
   include Shout
 end
 
+# DRIVER CODE
+
 Otis_Day_and_the_Knights = Band.new
 Teacher = Regular_person.new
 
-
-# DRIVER CODE
 puts Teacher.yell_angrily("Detention")
 puts Teacher.yell_happily("Great job on the test")
 
