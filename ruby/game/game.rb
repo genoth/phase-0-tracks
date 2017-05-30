@@ -7,8 +7,7 @@
 # Define a method to compare the user guess to the secret word, and change the state to game_is_over if they match and show a message that they won. Or, if they don't match, but the user has used the maximum allotted guesses, change the state to game_is_over and show a message that they lose.
 
 class WordGame
-  attr_accessor :secret_word
-  attr_reader :secret_word
+  attr_accessor :secret_word, :word_array, :guess_count, :guesses_allowed
   def initialize
     @secret_word = ""
     @guess_count = 0
@@ -30,17 +29,27 @@ end
 end
 
 game = WordGame.new
-word_array = ["unicorn", "dragon", "fantasy", "mythical", "story"]
+word_array = ["fantasy", "unicorn", "mythical", "story", "dragon"]
 @secret_word = word_array[rand(4)]
-letter_array = @secret_word.chars
-characters = @secret_word.length.to_i
-puts "#{@secret_word} is the secret word."
+secret_word = @secret_word
+secret_letter_array = secret_word.chars
+def generate_feedback(character)
+  secret_word = @secret_word
+current_feedback = character*secret_word.length
+end
+puts generate_feedback("_")
+puts "#{secret_word} is the secret word."
+puts "#{secret_letter_array} is the letter array."
 puts "Welcome to the word game! You have #{@guesses_allowed} to guess the word. Please guess a letter."
 user_guess = gets.chomp
-if @secret_word.include?(user_guess)
-  p "Good job!"
-  puts "#{user_guess} is the #{word_array.index}"
+if secret_letter_array.include?(user_guess)
+  secret_letter_array.each do |letter|
+    p letter
+  end
 end
+  p letter_array
+  puts "#{user_guess} is the #{letter_array.index}"
+
 
 
 
