@@ -17,12 +17,6 @@ class WordGame
     @user_input = ""
   end
 
-  def hide_word
-    secret_word = @secret_word
-    hide_word = "_"*secret_word.length
-  end
-
-
   def check_word(user_input)
     if user_input == @secret_word
       @game_is_over = true
@@ -41,28 +35,47 @@ word_array = ["fantasy", "unicorn", "mythical", "story", "dragon"]
 secret_word = @secret_word
 secret_letter_array = secret_word.chars
 def multiply(x,y)
-    x * y
-  end
+  x * y
+end
 
 
 puts "#{secret_word} is the secret word."
 puts "#{secret_letter_array} is the letter array."
-puts "Welcome to the word game! You have #{@guesses_allowed} to guess the word. Please guess a letter."
+puts "Welcome to the word game! You have #{@guesses_allowed} to guess the word."
+
+# method to create - - - - for secret word
 multiplier = secret_letter_array.length
 symbol = "_ "
 hidden_string = multiply(symbol, multiplier)
 puts hidden_string
 hidden_array = hidden_string.split
 
+until hidden_array == secret_letter_array
+  puts "Please guess a letter."
+  user_guess = gets.chomp
+  secret_letter_array.each_with_index do |letter, index|
+    if letter == user_guess
+      location = secret_letter_array.index(letter)
+      hidden_array.delete_at(location)
+      hidden_array.insert(location, letter)
+      puts "Good job!"
+      puts hidden_array.join(" ")
+    end
+  end
+end
 
-user_guess = gets.chomp
-
-secret_letter_array.each_with_index do |letter, index|
-  if letter == user_guess
-    location = secret_letter_array.index(letter)
-    hidden_array.delete_at(location)
-    hidden_array.insert(location, letter)
-    puts hidden_array.join(" ")
+until hidden_array == secret_letter_array
+  puts "Please guess a letter."
+  user_guess = gets.chomp
+  secret_letter_array.each_with_index do |letter, index|
+    if letter == user_guess
+      location = secret_letter_array.index(letter)
+      hidden_array.delete_at(location)
+      hidden_array.insert(location, letter)
+      puts "Good job!"
+      puts hidden_array.join(" ")
+    else puts "Sorry, #{user_guess} is not part of the secret word. Please try again. #{hidden_array.join(" ")}"
+    end
   end
 end
 
