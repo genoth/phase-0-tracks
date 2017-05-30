@@ -8,6 +8,7 @@
 
 class WordGame
   attr_accessor :secret_word, :word_array, :guess_count, :guesses_allowed
+
   def initialize
     @secret_word = ""
     @guess_count = 0
@@ -15,6 +16,12 @@ class WordGame
     @guesses_allowed = (@secret_word).length
     @user_input = ""
   end
+
+  def hide_word
+    secret_word = @secret_word
+    hide_word = "_"*secret_word.length
+  end
+
 
   def check_word(user_input)
     if user_input == @secret_word
@@ -24,8 +31,8 @@ class WordGame
       @game_is_over = true
       puts "You ran out of guesses!"
     else puts "Try again!"
+    end
   end
-end
 end
 
 game = WordGame.new
@@ -33,22 +40,51 @@ word_array = ["fantasy", "unicorn", "mythical", "story", "dragon"]
 @secret_word = word_array[rand(4)]
 secret_word = @secret_word
 secret_letter_array = secret_word.chars
-def generate_feedback(character)
-  secret_word = @secret_word
-current_feedback = character*secret_word.length
-end
-puts generate_feedback("_")
+def multiply(x,y)
+    x * y
+  end
+
+
 puts "#{secret_word} is the secret word."
 puts "#{secret_letter_array} is the letter array."
 puts "Welcome to the word game! You have #{@guesses_allowed} to guess the word. Please guess a letter."
+multiplier = secret_letter_array.length
+symbol = "_ "
+hidden_string = multiply(symbol, multiplier)
+puts hidden_string
+hidden_array = hidden_string.split
+
+
 user_guess = gets.chomp
-if secret_letter_array.include?(user_guess)
-  secret_letter_array.each do |letter|
-    p letter
+
+secret_letter_array.each_with_index do |letter, index|
+  if letter == user_guess
+    location = secret_letter_array.index(letter)
+    hidden_array.delete_at(location)
+    hidden_array.insert(location, letter)
+    puts hidden_array.join(" ")
   end
 end
-  p letter_array
-  puts "#{user_guess} is the #{letter_array.index}"
+
+
+# if user_guess == secret_letter_array[i]
+#   secret_letter_array[i] = user_guess
+#   i = i + 1
+#   p secret_letter_array[i]
+# end
+
+
+# if secret_letter_array.include?(user_guess)
+#   secret_letter_array.each do |letter|
+#     p letter
+#   end
+# end
+# p secret_letter_array
+
+# # i = 0
+
+
+
 
 
 
