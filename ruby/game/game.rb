@@ -7,49 +7,49 @@
 # Define a method to compare the user guess to the secret word, and change the state to game_is_over if they match and show a message that they won. Or, if they don't match, but the user has used the maximum allotted guesses, change the state to game_is_over and show a message that they lose.
 
 class WordGame
-  attr_accessor :secret_word, :guess_count, :guess_array, :secret_letter_array, :game_is_over
+  attr_accessor :secret_word, :guess_array, :game_is_over
+
   def initialize
     @secret_word = ""
-    @secret_letter_array = []
-    @guesses_allowed = ""
-    @guess_count = ""
     @guess_array = []
     @game_is_over = false
   end
 
-  def allowed_guesses
-    @guesses_allowed = @secret_word.length
+  def guesses_allowed
+    @secret_word.length
   end
 
   def secret_letter_array
-    @secret_letter_array = @secret_word.chars
+    @secret_word.chars
+  end
+
+  def guess_count
+    @guess_array.length
   end
 end
 
 game = WordGame.new
 puts "Welcome to the word guessing game! This game requires 2 players. Player 1 - please enter a secret word for Player 2 to guess."
 game.secret_word = gets.chomp
-p game.allowed_guesses
+p game.guesses_allowed
 puts "#{game.secret_word} is the secret word."
 puts "#{game.secret_letter_array} is the letter array."
 p game
 puts "It's time for Player 2!"
 p game.guess_count
 
-puts "Welcome to the word game! You have #{game.allowed_guesses} tries to guess the secret word."
+puts "Welcome to the word game! You have #{game.guesses_allowed} tries to guess the secret word."
 p game
+p game.secret_letter_array
 
-def multiply(x,y)
-  x * y
-end
 multiplier = game.secret_letter_array.length
-symbol = "_ "
-hidden_string = multiply(symbol, multiplier)
+hidden_string = "_ " * multiplier
 puts hidden_string
 hidden_array = hidden_string.split
 
-until hidden_array == game.secret_letter_array
-  if game.guess_count == game.allowed_guesses
+until hidden_array == game.secret_letter_array || game.guess_count == game.guesses_allowed
+  p game.guess_array
+  if game.guess_count == game.guesses_allowed
     puts "You ran out of guesses!"
   elsif hidden_array == game.secret_letter_array
     puts "You win!"
@@ -58,7 +58,7 @@ until hidden_array == game.secret_letter_array
     user_guess = gets.chomp
     game.guess_array << user_guess
     puts "#{game.guess_array} helllooooo!!!!"
-    game.guess_array = game.guess_array.uniq!
+    game.guess_array = game.guess_array.uniq
     p game.guess_array
     if game.secret_letter_array.include?(user_guess)
       puts "Good job!"
