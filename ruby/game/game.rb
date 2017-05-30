@@ -56,7 +56,8 @@ until hidden_array == game.secret_letter_array
   else
     puts "Please guess a letter."
     user_guess = gets.chomp
-    game.guess_array << user_guess.chars
+    game.guess_array << user_guess
+    puts "#{game.guess_array} helllooooo!!!!"
     game.guess_array = game.guess_array.uniq!
     p game.guess_array
     if game.secret_letter_array.include?(user_guess)
