@@ -37,5 +37,17 @@ describe WordGame do
     expect(game.game_won?).to eq(false)
   end
 
+  it "takes a letter as a guess and checks whether it exists in the secret word" do
+    game = WordGame.new("foobar")
+    user_guess = "f"
+    expect(game.secret_word_include?(user_guess)).to eq(true)
+  end
+
+  it "changes the masked array" do
+    game = WordGame.new("foobar")
+    game.secret_word_include?("f")
+    expect(game.masked_array).to eq(["f", "_", "_", "_", "_", "_"])
+  end
+
 
 end
