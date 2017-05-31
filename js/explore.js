@@ -7,5 +7,8 @@ function reverse(str) {
   return reversedStr;
 }
 
-# DRIVER CODE
-reverse("hello")
+// DRIVER CODE
+reverseTest = reverse("goodbye")
+
+if (1 == 1)
+console.log(reverseTest)
