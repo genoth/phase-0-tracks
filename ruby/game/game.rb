@@ -36,7 +36,7 @@ class WordGame
     secret_letter_array == @masked_array
   end
 
-  def secret_word_include?(user_guess)
+  def guess(user_guess)
     if @secret_word.include?(user_guess)
       matching_letter_locations = []
       secret_letter_array.each_index do |index|
