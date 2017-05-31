@@ -35,4 +35,23 @@ class WordGame
   def game_won?
     secret_letter_array == @masked_array
   end
+
+  def secret_word_include?(user_guess)
+    if @secret_word.include?(user_guess)
+      matching_letter_locations = []
+      secret_letter_array.each_index do |index|
+        if secret_letter_array[index] == user_guess
+          matching_letter_locations << index
+        end
+      end
+      matching_letter_locations.each do |integer|
+        @masked_array.delete_at(integer)
+        @masked_array.insert(integer, user_guess)
+      end
+    end
+    @guess_array << user_guess
+    @guess_array = @guess_array.uniq
+
+    @secret_word.include?(user_guess)
+  end
 end
