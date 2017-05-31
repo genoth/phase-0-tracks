@@ -7,12 +7,13 @@
 # Define a method to compare the user guess to the secret word, and change the state to game_is_over if they match and show a message that they won. Or, if they don't match, but the user has used the maximum allotted guesses, change the state to game_is_over and show a message that they lose.
 
 class WordGame
-  attr_accessor :secret_word, :guess_array, :game_is_over
+  attr_accessor :secret_word, :guess_array, :game_is_over, :masked_array
 
-  def initialize
-    @secret_word = ""
+  def initialize(secret_word)
+    @secret_word = secret_word
     @guess_array = []
     @game_is_over = false
+    @masked_array = ("_ " * @secret_word.length).split(" ")
   end
 
   def guesses_allowed
@@ -26,11 +27,18 @@ class WordGame
   def guess_count
     @guess_array.length
   end
+
+  def out_of_guesses?
+    guesses_allowed == guess_count
+  end
+
+  def game_won?
+    secret_letter_array == @masked_array
+  end
 end
 
-game = WordGame.new
 puts "Welcome to the word guessing game! This game requires 2 players. Player 1 - please enter a secret word for Player 2 to guess."
-game.secret_word = gets.chomp
+game = WordGame.new(gets.chomp)
 p game.guesses_allowed
 puts "#{game.secret_word} is the secret word."
 puts "#{game.secret_letter_array} is the letter array."
@@ -40,18 +48,14 @@ p game.guess_count
 
 puts "Welcome to the word game! You have #{game.guesses_allowed} tries to guess the secret word."
 p game
-p game.secret_letter_array
+puts "The secret letter array is #{game.secret_letter_array}."
 
-multiplier = game.secret_letter_array.length
-hidden_string = "_ " * multiplier
-puts hidden_string
-hidden_array = hidden_string.split
 
-until hidden_array == game.secret_letter_array || game.guess_count == game.guesses_allowed
+until game.game_won? || game.out_of_guesses?
   p game.guess_array
-  if game.guess_count == game.guesses_allowed
+  if game.out_of_guesses?
     puts "You ran out of guesses!"
-  elsif hidden_array == game.secret_letter_array
+  elsif game.game_won?
     puts "You win!"
   else
     puts "Please guess a letter."
@@ -69,26 +73,26 @@ until hidden_array == game.secret_letter_array || game.guess_count == game.guess
         end
       end
       matching_letter_locations.each do |integer|
-        hidden_array.delete_at(integer)
-        hidden_array.insert(integer, user_guess)
+        game.masked_array.delete_at(integer)
+        game.masked_array.insert(integer, user_guess)
       end
-      puts hidden_array.join(" ")
+      puts game.masked_array.join(" ")
     else puts "Please try again."
     end
   end
 end
 
-# until hidden_array == secret_letter_array
+# until masked_array == secret_letter_array
 #   puts "Please guess a letter."
 #   user_guess = gets.chomp
 #   secret_letter_array.each_with_index do |letter, index|
 #     if letter == user_guess
 #       location = secret_letter_array.index(letter)
-#       hidden_array.delete_at(location)
-#       hidden_array.insert(location, letter)
+#       masked_array.delete_at(location)
+#       masked_array.insert(location, letter)
 #       puts "Good job!"
-#       puts hidden_array.join(" ")
-#     else puts "Sorry, #{user_guess} is not part of the secret word. Please try again. #{hidden_array.join(" ")}"
+#       puts masked_array.join(" ")
+#     else puts "Sorry, #{user_guess} is not part of the secret word. Please try again. #{masked_array.join(" ")}"
 #     end
 #   end
 # end
