@@ -7,88 +7,32 @@
 # Define a method to compare the user guess to the secret word, and change the state to game_is_over if they match and show a message that they won. Or, if they don't match, but the user has used the maximum allotted guesses, change the state to game_is_over and show a message that they lose.
 
 class WordGame
-  attr_accessor :secret_word, :word_array, :guess_count, :guesses_allowed
+  attr_accessor :secret_word, :guess_array, :game_is_over, :masked_array
 
-  def initialize
-    @secret_word = ""
-    @guess_count = 0
+  def initialize(secret_word)
+    @secret_word = secret_word
+    @guess_array = []
     @game_is_over = false
-    @guesses_allowed = (@secret_word).length
-    @user_input = ""
+    @masked_array = ("_ " * @secret_word.length).split(" ")
   end
 
-  def check_word(user_input)
-    if user_input == @secret_word
-      @game_is_over = true
-      puts "You win!"
-    elsif user_input != @secret_word && @guess_count > @secret_word.length
-      @game_is_over = true
-      puts "You ran out of guesses!"
-    else puts "Try again!"
-    end
+  def guesses_allowed
+    @secret_word.length
+  end
+
+  def secret_letter_array
+    @secret_word.chars
+  end
+
+  def guess_count
+    @guess_array.length
+  end
+
+  def out_of_guesses?
+    guesses_allowed == guess_count
+  end
+
+  def game_won?
+    secret_letter_array == @masked_array
   end
 end
-
-game = WordGame.new
-word_array = ["fantasy", "unicorn", "mythically", "storybook", "dragonfry"]
-@secret_word = word_array[rand(4)]
-secret_word = @secret_word
-secret_letter_array = secret_word.chars
-
-
-puts "#{secret_word} is the secret word."
-puts "#{secret_letter_array} is the letter array."
-puts "Welcome to the word game! You have #{@guesses_allowed} to guess the word."
-
-# method to create - - - - for secret word
-def multiply(x,y)
-  x * y
-end
-multiplier = secret_letter_array.length
-symbol = "_ "
-hidden_string = multiply(symbol, multiplier)
-puts hidden_string
-hidden_array = hidden_string.split
-
-until hidden_array == secret_letter_array
-  puts "Please guess a letter."
-  user_guess = gets.chomp
-  if secret_letter_array.include?(user_guess)
-    puts "we have #{secret_letter_array.count(user_guess)}"
-    matching_letter_locations = []
-    secret_letter_array.each_index do |index|
-      if secret_letter_array[index] == user_guess
-        matching_letter_locations << index
-      end
-    end
-    matching_letter_locations.each do |integer|
-      hidden_array.delete_at(integer)
-      hidden_array.insert(integer, user_guess)
-    end
-    puts hidden_array.join(" ")
-  end
-end
-
-# until hidden_array == secret_letter_array
-#   puts "Please guess a letter."
-#   user_guess = gets.chomp
-#   secret_letter_array.each_with_index do |letter, index|
-#     if letter == user_guess
-#       location = secret_letter_array.index(letter)
-#       hidden_array.delete_at(location)
-#       hidden_array.insert(location, letter)
-#       puts "Good job!"
-#       puts hidden_array.join(" ")
-#     else puts "Sorry, #{user_guess} is not part of the secret word. Please try again. #{hidden_array.join(" ")}"
-#     end
-#   end
-# end
-
-
-
-
-
-
-
-
-
