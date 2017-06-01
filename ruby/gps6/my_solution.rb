@@ -21,8 +21,8 @@ class VirusPredictor
 
 #
   def virus_effects
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    predicted_deaths
+    speed_of_spread
   end
 
   private
@@ -30,7 +30,8 @@ class VirusPredictor
 # .floor is a built in method that returns the largets integer less than or equal to a float (decimal value), i.e. it rounds down to the nearest whole number
 # predicted_deaths method takes population_density, population, and state as arguments & then calculates the number of deaths (with number of deaths being higher in more dense areas)
 # then prints a human readable statement that indicates how many deaths might occur in a given state
-  def predicted_deaths(population_density, population, state)
+
+  def predicted_deaths
     # predicted deaths is solely based on population density
     if @population_density >= 200
       number_of_deaths = (@population * 0.4).floor
@@ -50,7 +51,8 @@ class VirusPredictor
 
 # takes population_density and state as arguments, and calculates the speed, how fast the outbreak will spread
 # prints a human readable statement of how fast the outbreak will spread across a given state
-  def speed_of_spread(population_density, state) #in months
+
+  def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
     speed = 0.0
@@ -78,6 +80,14 @@ end
 # DRIVER CODE
  # initialize VirusPredictor for each state
 
+STATE_DATA.each do |state, population_info|
+#   test_state = VirusPredictor.new(state, STATE_DATA[:state][:population_density], STATE_DATA[:state][:population])
+# test_state.virus_effects
+test_state = VirusPredictor.new(state, population_info[:population_density], population_info[:population])
+test_state.virus_effects
+end
+
+# virus_effects checks the impact on an individual, and if you put the virus_predictor inside the class you would muddy the waters between group and individual
 
 alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
 alabama.virus_effects
