@@ -4,18 +4,22 @@
 # We spent [#] hours on this challenge.
 
 # EXPLANATION OF require_relative
-#
-#
+# require_relative allows you to access and use data from another file located in the same directory (often used for rspec, css stylesheets, etc.)
+# using require, you need an absolute path
+
 require_relative 'state_data'
+
 
 class VirusPredictor
 
+# Initialize method sets the default state of new instances of the class and its instance variables
   def initialize(state_of_origin, population_density, population)
     @state = state_of_origin
     @population = population
     @population_density = population_density
   end
 
+#
   def virus_effects
     predicted_deaths(@population_density, @population, @state)
     speed_of_spread(@population_density, @state)
@@ -23,6 +27,9 @@ class VirusPredictor
 
   private
 
+# .floor is a built in method that returns the largets integer less than or equal to a float (decimal value), i.e. it rounds down to the nearest whole number
+# predicted_deaths method takes population_density, population, and state as arguments & then calculates the number of deaths (with number of deaths being higher in more dense areas)
+# then prints a human readable statement that indicates how many deaths might occur in a given state
   def predicted_deaths(population_density, population, state)
     # predicted deaths is solely based on population density
     if @population_density >= 200
@@ -41,6 +48,8 @@ class VirusPredictor
 
   end
 
+# takes population_density and state as arguments, and calculates the speed, how fast the outbreak will spread
+# prints a human readable statement of how fast the outbreak will spread across a given state
   def speed_of_spread(population_density, state) #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
