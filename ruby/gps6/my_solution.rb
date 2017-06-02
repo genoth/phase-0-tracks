@@ -27,27 +27,48 @@ class VirusPredictor
 
   private
 
-# .floor is a built in method that returns the largets integer less than or equal to a float (decimal value), i.e. it rounds down to the nearest whole number
+# If you move private above virus_effects, it makes the method virus_effects private. Then you get an error when calling the Virus_Predictor method. It seems that you can only call private methods on themselves, not on other objects.
+
+# Private methods cannot be called with an explicit receiver - the receiver is always self. This means that private methods can be called only in the context of the current object; you cannot invoke another object's private methods.
+
+# I think you would want to use a private method if you want to restrict or control access to an object.
+
+# .floor is a built in method that returns the largest integer less than or equal to a float (decimal value), i.e. it rounds down to the nearest whole number
 # predicted_deaths method takes population_density, population, and state as arguments & then calculates the number of deaths (with number of deaths being higher in more dense areas)
 # then prints a human readable statement that indicates how many deaths might occur in a given state
 
+  # def predicted_deaths
+  #   # predicted deaths is solely based on population density
+  #   if @population_density >= 200
+  #     number_of_deaths = (@population * 0.4).floor
+  #   elsif @population_density >= 150
+  #     number_of_deaths = (@population * 0.3).floor
+  #   elsif @population_density >= 100
+  #     number_of_deaths = (@population * 0.2).floor
+  #   elsif @population_density >= 50
+  #     number_of_deaths = (@population * 0.1).floor
+  #   elseif @population_density >=
+  #     number_of_deaths = (@population * 0.05).floor
+  #   end
+  #   print "#{@state} will lose #{number_of_deaths} people in this outbreak"
+  # end
+
+#### REFACTORED BELOW #######################################
+
   def predicted_deaths
-    # predicted deaths is solely based on population density
-    if @population_density >= 200
-      number_of_deaths = (@population * 0.4).floor
-    elsif @population_density >= 150
-      number_of_deaths = (@population * 0.3).floor
-    elsif @population_density >= 100
-      number_of_deaths = (@population * 0.2).floor
-    elsif @population_density >= 50
-      number_of_deaths = (@population * 0.1).floor
-    else
-      number_of_deaths = (@population * 0.05).floor
+    threshold = [0, 50, 100, 150, 200]
+    proportion = [0.05, 0.1, 0.2, 0.3, 0.4]
+    i = 0
+    while i <= 4
+      if threshold[i] <= @population_density
+        number_of_deaths = (@population * proportion[i]).floor
+      end
+      i = i + 1
     end
-
-    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
-
+    print "#{@state} will lose #{number_of_deaths} people in this outbreak."
   end
+
+
 
 # takes population_density and state as arguments, and calculates the speed, how fast the outbreak will spread
 # prints a human readable statement of how fast the outbreak will spread across a given state
