@@ -65,36 +65,40 @@ class VirusPredictor
       end
       i = i + 1
     end
-    print "#{@state} will lose #{number_of_deaths} people in this outbreak."
+    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
   end
-
-
 
 # takes population_density and state as arguments, and calculates the speed, how fast the outbreak will spread
 # prints a human readable statement of how fast the outbreak will spread across a given state
 
-  def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
-    speed = 0.0
 
-    if @population_density >= 200
-      speed += 0.5
-    elsif @population_density >= 150
-      speed += 1
-    elsif @population_density >= 100
-      speed += 1.5
-    elsif @population_density >= 50
-      speed += 2
-    else
-      speed += 2.5
+  def speed_of_spread #in months
+    speed_array = [2.5, 2, 1.5, 1, 0.5]
+    threshold = [0, 50, 100, 150, 200]
+    i = 0
+    while i <= 4
+      if threshold[i] <= @population_density
+        speed = speed_array[i]
+      end
+      i = i + 1
     end
-
-    puts " and will spread across the state in #{speed} months.\n\n"
-
+    puts " and the outbreak will spread across the state in #{speed} months."
   end
-
 end
+    # speed = 0.0
+    # if @population_density >= 200
+    #   speed += 0.5
+    # elsif @population_density >= 150
+    #   speed += 1
+    # elsif @population_density >= 100
+    #   speed += 1.5
+    # elsif @population_density >= 50
+    #   speed += 2
+    # else
+    #   speed += 2.5
+    # end
 
 #=======================================================================
 
