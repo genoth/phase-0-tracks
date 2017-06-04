@@ -1,6 +1,7 @@
 #population density is number of people per square mile as of 2012
 #this data is updated every year with estimates from a 10 year census
 
+# Capitalization of STATE_DATA points to the fact that it's a constant variable, defines business or game logic and you don't want to change it or mutate it in any way
 
 STATE_DATA = {
   "Alabama" => {population_density: 94.65, population: 4822023},
