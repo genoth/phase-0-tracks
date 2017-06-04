@@ -163,13 +163,18 @@ alaska.virus_effects
 # Reflection Section
 
 # What are the differences between the two different hash syntaxes shown in the state_data file?
+    # Using the => syntax in the hash, versus using colon symbols, e.g. population_density: 94.65. The main difference is that with the => you can make the value another hash. Also, you can use keys that are integers more easily.
 
 # What does require_relative do? How is it different from require?
     # require_relative allows you to access and use data from another file located in the same directory (often used for rspec, css stylesheets, etc.) Using require you can acess data from a file located in a different directory - and you need to use an absolute path.
 
 # What are some ways to iterate through a hash?
+    # each_pair
+    # each_value
+    # each_key
 
 # When refactoring virus_effects, what stood out to you about the variables, if anything?
+    # I learned that since the VirusPredictor instances are intialized with the @state attribute, I didn't even need to specifically reference the @state attribute in my method that iterated over the state instances.
 
 # What concept did you most solidify in this challenge?
-    # This challenge most solidified the concept of classes for me. For example, I learned that since the VirusPredictor instances are intialized with the @state attribute, I didn't even need to specifically reference the @state attribute in my method that iterated over the state instances.
+    # This challenge most solidified how to use hashes in practice and iterate over them. I learned that you should use the => rather than the symbol when your keys are integers that you want to use.
