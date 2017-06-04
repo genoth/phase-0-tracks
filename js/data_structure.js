@@ -1,20 +1,20 @@
 var horseNames=["Ed","Sea Biscuit","Black Beauty","Bob"];
-var horseColors=["blue", "red","yellow","green"];
-​
+var horseColors=["blue","red","yellow","green"];
+
 horseColors.push("purple");
 horseNames.push("Buttercup");
-​
+
 function pair(horseNames,horseColors){
-var horses={};
-for(i=0;i<horseNames.length;i++){
- horses[names[i]]=colors[i]
+  var horses={};
+  for(i=0;i<horseNames.length;i++){
+   horses[horseNames[i]]=horseColors[i]
+  }
+
+  for(i = 0; i < horseColors.length;i++) {
+   console.log(horseColors[i])
+  }
 }
-​
-for(i = 0; i < horseColors.length;i++) {
- console.log(horseColors[i])
-}
-}
-​
+
 console.log(pair(horseNames,horseColors));
 
 // In this context, 'this' refers to
@@ -58,12 +58,24 @@ console.log("________________");
 
 /// RELEASE 3
 
+// 1. If you wanted to loop through the keys and values of an object, how would you do that? (There are a few ways to accomplish this, and some gotchas that can happen depending on your approach.)
+
 // for (var prop in Car) {
 //   console.log(`Car.${prop} = ${Car[prop]}`);
 // }
 
-var iterate = "";
+// x here is the key (make, year, is running, and rev)
 var x;
 for (x in newCar1) {
-  console.log(iterate += newCar1[x]);
+  console.log(x, newCar1[x]);
 }
+
+// iterating through the cars
+var carArray = [newCar1, newCar2, newCar3];
+  for(i = 0; i < carArray.length;i++) {
+   console.log(carArray[i])
+}
+
+// 2. Are there advantages to using constructor functions to create objects? Disadvantages?
+// Using a consructor function makes it kind of similar to a class in that each object has the same type of properties (i.e. make, year, etc.) It is a "child" of a pre-defined object or prototype. I guess the disadvantages would be that this limits the type of object you can create with a constructor.
+
