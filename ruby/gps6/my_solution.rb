@@ -56,17 +56,33 @@ class VirusPredictor
 #### REFACTORED BELOW #######################################
 
   def predicted_deaths
-    threshold = [0, 50, 100, 150, 200]
-    proportion = [0.05, 0.1, 0.2, 0.3, 0.4]
-    i = 0
-    while i <= 4
-      if threshold[i] <= @population_density
-        number_of_deaths = (@population * proportion[i]).floor
+    death_thresholds = {
+      0 => 0.05,
+      50 => 0.1,
+      100 => 0.2,
+      150 => 0.3,
+      200 => 0.4
+    }
+    number_of_deaths = nil
+    death_thresholds.each_pair do | threshold, proportion |
+      if threshold <= @population_density
+        number_of_deaths = (@population * proportion).floor
       end
-      i = i + 1
     end
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
   end
+
+### solution with each and pairs of arrays
+  # thresholds = [0, 50, 100, 150, 200]
+    # proportions = [0.05, 0.1, 0.2, 0.3, 0.4]
+  #   number_of_deaths = nil
+  #   thresholds.each_with_index do | threshold, i |
+  #     if threshold <= @population_density
+  #       number_of_deaths = (@population * proportions[i]).floor
+  #     end
+  #   end
+  #   print "#{@state} will lose #{number_of_deaths} people in this outbreak"
+  # end
 
 # takes population_density and state as arguments, and calculates the speed, how fast the outbreak will spread
 # prints a human readable statement of how fast the outbreak will spread across a given state
@@ -75,17 +91,33 @@ class VirusPredictor
     # by additional factors we haven't added into this functionality.
 
   def speed_of_spread #in months
-    speed_array = [2.5, 2, 1.5, 1, 0.5]
-    threshold = [0, 50, 100, 150, 200]
-    i = 0
-    while i <= 4
-      if threshold[i] <= @population_density
-        speed = speed_array[i]
+    speed_thresholds = {
+      0 => 2.5,
+      50 => 2,
+      100 => 1.5,
+      150 => 1,
+      200 => 0.5
+    }
+    speed = nil
+    speed_thresholds.each_pair do | threshold, month |
+      if threshold <= @population_density
+        speed = month
       end
-      i = i + 1
     end
     puts " and the outbreak will spread across the state in #{speed} months."
   end
+
+  # def speed_of_spread #in months
+  #   speed = nil
+  #   speed_array = [2.5, 2, 1.5, 1, 0.5]
+  #   thresholds = [0, 50, 100, 150, 200]
+  #   thresholds.each_with_index do | threshold, i |
+  #     if thresholds[i] <= @population_density
+  #       speed = speed_array[i]
+  #     end
+  #   end
+  #   puts " and the outbreak will spread across the state in #{speed} months."
+  # end
 end
     # speed = 0.0
     # if @population_density >= 200
@@ -129,3 +161,15 @@ alaska.virus_effects
 
 #=======================================================================
 # Reflection Section
+
+# What are the differences between the two different hash syntaxes shown in the state_data file?
+
+# What does require_relative do? How is it different from require?
+    # require_relative allows you to access and use data from another file located in the same directory (often used for rspec, css stylesheets, etc.) Using require you can acess data from a file located in a different directory - and you need to use an absolute path.
+
+# What are some ways to iterate through a hash?
+
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+
+# What concept did you most solidify in this challenge?
+    # This challenge most solidified the concept of classes for me. For example, I learned that since the VirusPredictor instances are intialized with the @state attribute, I didn't even need to specifically reference the @state attribute in my method that iterated over the state instances.
