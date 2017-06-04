@@ -11,11 +11,13 @@
 // }
 
 function longestPhrase(Array){
-  var phraseLengths = {};
+  var longest = "";
   for(i = 0; i < Array.length; i++){
-   phraseLengths[Array[i]] = (Array[i]).length;
+   if (Array[i].length > longest.length) {
+    longest = Array[i];
+   }
   }
-  console.log(phraseLengths)
+    console.log(longest);
 }
 
 var phraseArray = ["Hello, sir", "Good day, sir", "Good afternoon, my fine sir."]
