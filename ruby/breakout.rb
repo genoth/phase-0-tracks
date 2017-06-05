@@ -36,12 +36,19 @@ class Task_list
   end
 
   def print_list()
-    puts "Here is your to-do list:"
+    puts "#{@owner}, here is your to-do list, due #{due_date}:"
     @locations.each do |location, task|
       puts "At #{location}:"
       task.each do |task|
         puts "-#{task}"
       end
+    end
+  end
+
+  def is_past_due?
+    days_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    if @locations != {} && days_of_week.index(Time.now.strftime("%A")) > days_of_week.index(@due_date)
+      puts "The list is past due!"
     end
   end
 
@@ -57,7 +64,8 @@ first_list.add_task("buy flowers", "Marianos")
 first_list.add_task("pick up groceries", "Marianos")
 first_list.complete_task("buy flowers", "Marianos")
 first_list.print_list()
-
+another_list = Task_list.new("Monday", "Geoffrey")
+another_list.is_past_due?
 
   # attribute is kind of like a public version of an instance variable
-   # the storage mechanism for saving the value of an attribute is by storing it as an instance variable
+  # the storage mechanism for saving the value of an attribute is by storing it as an instance variable
