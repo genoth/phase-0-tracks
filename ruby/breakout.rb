@@ -31,27 +31,32 @@ class Task_list
       puts "It's not on the list for this location."
     else
       @locations[location].delete(task)
-      puts "You finished the task #{task}! Good job. Here is the rest of your list- #{@locations}"
+      puts "You finished the task #{task}! Good job."
+    end
+  end
+
+  def print_list()
+    puts "Here is your to-do list:"
+    @locations.each do |location, task|
+      puts "At #{location}:"
+      task.each do |task|
+        puts "-#{task}"
+      end
     end
   end
 
 end
 
+# Driver code
 first_list = Task_list.new("Friday", "Geoffrey")
 first_list.add_location("Walgreens")
-
 first_list.add_task("pick up groceries", "Marianos")
-p first_list
-
 first_list.add_task("get RX", "Walgreens")
 first_list.add_task("buy vitamin water", "Walgreens")
 first_list.add_task("buy flowers", "Marianos")
-
 first_list.add_task("pick up groceries", "Marianos")
-p first_list
-
 first_list.complete_task("buy flowers", "Marianos")
-
+first_list.print_list()
 
 
   # attribute is kind of like a public version of an instance variable
