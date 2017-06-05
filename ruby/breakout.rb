@@ -20,11 +20,18 @@ class Task_list
     if @locations.include?(location) && @locations[location].include?(new_task)
       puts "The task #{new_task} is already on the list for the location #{location}"
     elsif @locations.include?(location)
-      # check if task already exists at that location
-      # if not, puts
-      @locations[location] << [new_task]
-    else # if it's a totally new place...
+      @locations[location] << new_task
+    else
       @locations[location] = [new_task]
+    end
+  end
+
+  def complete_task(task, location)
+    if @locations[location].include?(task) == false
+      puts "It's not on the list for this location."
+    else
+      @locations[location].delete(task)
+      puts "You finished the task #{task}! Good job. Here is the rest of your list- #{@locations}"
     end
   end
 
@@ -36,11 +43,14 @@ first_list.add_location("Walgreens")
 first_list.add_task("pick up groceries", "Marianos")
 p first_list
 
-first_list.add_task("pick up groceries", "Walgreens")
+first_list.add_task("get RX", "Walgreens")
+first_list.add_task("buy vitamin water", "Walgreens")
 first_list.add_task("buy flowers", "Marianos")
 
 first_list.add_task("pick up groceries", "Marianos")
 p first_list
+
+first_list.complete_task("buy flowers", "Marianos")
 
 
 
