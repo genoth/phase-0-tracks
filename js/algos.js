@@ -1,5 +1,5 @@
 // Pseudocode Release 0
-// Write a function that takes an array of phrases as an argument, and then iterates through each phrase and takes the length. It can put the lengths into a new array of lengths, and then return the array item which is at the same index as the length item that is largest. Or... creates a hash of keys and values and returns the key with the highest number for value?
+// Write a function that takes an array of phrases as an argument. First, the function should create a variable 'longest' and set it equal to "". Then, it should iterate through each phrase and takes the length. If the phrase length is greater than the length of the empty variable longest, then it sets the variable longest equal to the phrase in question. So in the end, the phrase with the greatest length will be equal to the variable longest. The function will then return the value of longest (i.e. the longest phrase).
 
 // ---------------------Release 0---------------------
 
