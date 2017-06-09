@@ -1,0 +1,72 @@
+RELEASE 2
+
+Item 1
+==================
+SELECT * FROM cities;
+
+	1|New York|1|New York|true|2
+	2|Los Angeles|2|California|true|2
+	3|Chicago|3|Illinois|true|2
+	4|Houston|4|Texas|false|2
+	5|Phoenix|5|Arizona|true|1
+	6|Philadelphia|6|Pennsylvania|false|2
+
+Item 2
+===================
+UPDATE candidates SET name="Donald Trump" WHERE name = "Donald J. Trump";
+SELECT * FROM candidates;
+
+	1|Donald Trump
+	2|Hillary Clinton
+
+Item 3
+====================
+SELECT cities.name, cities.population_ranking, candidates.name, cities.state, cities.voted_with_state FROM cities JOIN candidates ON cities.voted_for_id = candidates.id;
+
+	New York|1|Hillary Clinton|New York|true
+	Los Angeles|2|Hillary Clinton|California|true
+	Chicago|3|Hillary Clinton|Illinois|true
+	Houston|4|Hillary Clinton|Texas|false
+	Phoenix|5|Donald Trump|Arizona|true
+	Philadelphia|6|Hillary Clinton|Pennsylvania|false
+
+Item 4
+=====================
+SELECT cities.name, cities.population_ranking, candidates.name FROM cities JOIN candidates ON cities.voted_for_id = candidates.id;
+
+	New York|1|Hillary Clinton
+	Los Angeles|2|Hillary Clinton
+	Chicago|3|Hillary Clinton
+	Houston|4|Hillary Clinton
+	Phoenix|5|Donald Trump
+	Philadelphia|6|Hillary Clinton
+
+Item 5
+=====================
+DELETE FROM cities WHERE name="Philadelphia";
+SELECT * FROM cities;
+
+	1|New York|1|New York|true|2
+	2|Los Angeles|2|California|true|2
+	3|Chicago|3|Illinois|true|2
+	4|Houston|4|Texas|false|2
+	5|Phoenix|5|Arizona|true|1
+
+RELEASE 3
+
+https://www.tutorialspoint.com/sqlite/sqlite_using_joins.htm
+
+- INNER JOIN
+
+SELECT cities.name, cities.population_ranking, candidates.name FROM cities INNER JOIN candidates ON cities.voted_for_id = candidates.id;
+	New York|1|Hillary Clinton
+	Los Angeles|2|Hillary Clinton
+	Chicago|3|Hillary Clinton
+	Houston|4|Hillary Clinton
+	Phoenix|5|Donald Trump
+
+- Conditional INNER JOIN using WHERE
+
+SELECT cities.*, candidates.name FROM cities INNER JOIN candidates ON cities.voted_for_id = candidates.id WHERE candidates.id = 1; 
+	
+	5|Phoenix|5|Arizona|true|1|Donald Trump
