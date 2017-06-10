@@ -193,7 +193,6 @@ party_id_list = [
   3
 ]
 
-
 # Create method to populate parties table using parties array
 parties = [
   "Democrat",
@@ -210,7 +209,7 @@ parties.each do |x|
   add_party(db, x)
 end
 
-# Create method to populate officials table
+# Create method to populate officials table using arrays (name_list, state_list, and party_id_list)
 def add_official(db, name, position, state, party_id)
   db.execute("INSERT INTO officials (name, position, state, party_id) VALUES (?, ?, ?, ?)", [name, position, state, party_id])
 end
