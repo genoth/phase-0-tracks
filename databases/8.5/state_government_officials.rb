@@ -3,13 +3,6 @@ require 'sqlite3'
 db = SQLite3::Database.new("state_officials.db")
 db.results_as_hash = true
 
-create_state_table_cmd = <<-SQL
-CREATE TABLE IF NOT EXISTS states(
-id INTEGER PRIMARY KEY,
-name VARCHAR(255)
-)
-SQL
-
 create_party_table_cmd = <<-SQL
 CREATE TABLE IF NOT EXISTS parties(
 id INTEGER PRIMARY KEY,
@@ -27,7 +20,6 @@ party_id INTEGER, FOREIGN KEY(party_id) REFERENCES parties(id)
 )
 SQL
 
-db.execute(create_state_table_cmd)
 db.execute(create_party_table_cmd)
 db.execute(create_government_table_cmd)
 
@@ -193,30 +185,31 @@ party_id_list = [
   3
 ]
 
-# Create method to populate parties table using parties array
-parties = [
-  "Democrat",
-  "Independent",
-  "Republican"
-]
+# # Create method to populate parties table using parties array
+# parties = [
+#   "Democrat",
+#   "Independent",
+#   "Republican"
+# ]
 
-def add_party(db, name)
-  db.execute("INSERT INTO parties (name) VALUES (?)", [name])
-end
+# def add_party(db, name)
+#   db.execute("INSERT INTO parties (name) VALUES (?)", [name])
+# end
 
-# Populate parties table with id and party name
-parties.each do |x|
-  add_party(db, x)
-end
+# # Populate parties table with id and party name
+# parties.each do |x|
+#   add_party(db, x)
+# end
 
-# Create method to populate officials table using arrays (name_list, state_list, and party_id_list)
-def add_official(db, name, position, state, party_id)
-  db.execute("INSERT INTO officials (name, position, state, party_id) VALUES (?, ?, ?, ?)", [name, position, state, party_id])
-end
+# # Create method to populate officials table using arrays (name_list, state_list, and party_id_list)
+# def add_official(db, name, position, state, party_id)
+#   db.execute("INSERT INTO officials (name, position, state, party_id) VALUES (?, ?, ?, ?)", [name, position, state, party_id])
+# end
 
-# Populate officials table with Attorney Generals from each state
-i = 0
-name_list.length.times do |i|
-  add_official(db, name_list[i], "Attorney General", state_list[i], party_id_list[i])
-  i = i + 1
-end
+# # Populate officials table with Attorney Generals from each state
+# i = 0
+# name_list.length.times do |i|
+#   add_official(db, name_list[i], "Attorney General", state_list[i], party_id_list[i])
+#   i = i + 1
+# end
+
