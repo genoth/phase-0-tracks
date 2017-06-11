@@ -5,9 +5,19 @@ db = SQLite3::Database.open("state_officials.db")
 ####################
 # explore ORM by retrieving data
 
+## experiment with format of printed data
 def retrieve_info(db, input)
-  db.execute("SELECT officials.name, officials.position, parties.name FROM officials JOIN parties ON officials.party_id = parties.id WHERE state = '#{input}';")
+  name = (db.execute("SELECT officials.name FROM officials WHERE state = '#{input}';")).first.first
+  party = (db.execute("SELECT parties.name FROM officials JOIN parties ON officials.party_id = parties.id WHERE state = '#{input}';")).first.first
+  puts "The attorney general for #{input} is #{name}, of the #{party} party."
 end
+    # officials.position, parties.name FROM officials JOIN parties ON officials.party_id = parties.id WHERE state = '#{input}';")
+
+
+### THIS WORKS!
+# def retrieve_info(db, input)
+#   db.execute("SELECT officials.name, officials.position, parties.name FROM officials JOIN parties ON officials.party_id = parties.id WHERE state = '#{input}';")
+# end
 puts "Welcome to the state government officials database."
 puts "To find information about a state's Attorney General, please type the state name."
 state = gets.chomp
