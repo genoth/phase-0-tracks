@@ -12,9 +12,18 @@ state = gets.chomp
 
 # pull row and parse data into human readable format.
 row = retrieve_info(db, state)
-name = row[0]
-position = row[1]
-party = row[2]
-puts "The #{position} for #{state} is #{name}, of the #{party} party."
+
+result_0 = row[0]
+name_0 = result_0[0]
+position_0 = result_0[1]
+party_0 = result_0[2]
+
+result_1 = row[1]
+name_1 = result_1[0]
+position_1 = result_1[1]
+party_1 = result_1[2]
+
+puts "The #{position_0} for #{state} is #{name_0}, of the #{party_0} party."
+puts "The #{position_1} for #{state} is #{name_1}, of the #{party_1} party."
 
 
