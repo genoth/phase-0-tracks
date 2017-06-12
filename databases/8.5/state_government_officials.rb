@@ -273,18 +273,11 @@ governor_party_id_list = [
   3,
   2,
   3,
-  3
+  3,
+  1,
   1,
   1,
   1,
-  1,
-  3,
-  3,
-  1,
-  3,
-  3,
-  3,
-  3,
   3,
   3,
   1,
@@ -292,7 +285,13 @@ governor_party_id_list = [
   3,
   3,
   3,
-
+  3,
+  3,
+  1,
+  3,
+  3,
+  3,
+  3,
   3,
   3,
   1,
@@ -380,9 +379,9 @@ def add_official(db, name, position, state, party_id)
 end
 
 # Populate officials table with governors from each state
-i = 0
-governor_name_list.length.times do |i|
-  add_official(db, governor_name_list[i], "Governor", governor_state_list[i], governor_party_id_list[i])
-  i = i + 1
-end
+# i = 0
+# governor_name_list.length.times do |i|
+#   add_official(db, governor_name_list[i], "Governor", governor_state_list[i], governor_party_id_list[i])
+#   i = i + 1
+# end
 
