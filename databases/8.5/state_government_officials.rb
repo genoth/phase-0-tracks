@@ -197,7 +197,7 @@ party_id_list = [
 #   db.execute("INSERT INTO parties (name) VALUES (?)", [name])
 # end
 
-# # Populate parties table with id and party name
+# # Method used to pfopulate parties table with id and party name
 # parties.each do |x|
 #   add_party(db, x)
 # end
@@ -207,7 +207,8 @@ def add_official(db, name, position, state, party_id)
   db.execute("INSERT INTO officials (name, position, state, party_id) VALUES (?, ?, ?, ?)", [name, position, state, party_id])
 end
 
-# # Populate officials table with Attorney Generals from each state
+#--------- Method used to populate officials table with Attorney Generals from each state
+
 # i = 0
 # name_list.length.times do |i|
 #   add_official(db, name_list[i], "Attorney General", state_list[i], party_id_list[i])
@@ -373,12 +374,12 @@ governor_party_id_list = [
     'Wyoming'
   ]
 
-# Create method to populate officials table using arrays (name_list, state_list, and party_id_list)
+# Method to populate officials table using arrays (name_list, state_list, and party_id_list)
 def add_official(db, name, position, state, party_id)
   db.execute("INSERT INTO officials (name, position, state, party_id) VALUES (?, ?, ?, ?)", [name, position, state, party_id])
 end
 
-# Populate officials table with governors from each state
+# Method used to populate officials table with governors from each state
 # i = 0
 # governor_name_list.length.times do |i|
 #   add_official(db, governor_name_list[i], "Governor", governor_state_list[i], governor_party_id_list[i])
