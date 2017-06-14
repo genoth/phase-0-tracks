@@ -1,4 +1,4 @@
-## Release 1
+## 9.1 Release 1
 1. What are some of the key design philosophies of the Linux operating system?
 
   * Small is beautiful & Each program does 1 thing well - each program command is fairly small and each performs a specific task
@@ -26,3 +26,17 @@
   * protects you from transofrming trivial errors into disasters
   * this way if you create a vulnerability, the root is still protected from an attacker
   * if there's a crash, it won't wipe out your entire root directory
+
+## Release 2
+
+Use dev tools to explore the DOM properties of an HTML element. Find at least five properties (in addition to the ones pointed out in the video) that might be interesting to change once the page is loaded, either because you have a good guess at what they do, or because you're curious about what they do.
+
+1. You can add an Event Listener method to a button, so that a pop-up dialogue occurs when the button is clicked.
+
+```element.addEventListener("click", function(){ alert("Hello World!"); });```
+
+2. Form autocomplete property - you can turn form autocomplete on or off and the browser will automatically complete values based on values that the user has entered before. Or you can turn it off, as in the example below.
+
+```document.getElementById("myForm").autocomplete = "off";```
+
+
