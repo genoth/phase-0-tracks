@@ -15,7 +15,7 @@ get '/' do
 end
 
 # write a GET route with route parameters
-#----------this works: http://localhost:4567/about/Gwynne
+# this works: http://localhost:4567/about/Gwynne
 get '/about/:person' do #---this is a route with a route parameter defined in it. Gwynne should be interpreted as the value of this variable.
   person = params[:person]
   "#{person} is a programmer, and #{person} is learning Sinatra."
@@ -26,7 +26,7 @@ get '/abouttt/:person' do
 end
 
 
-# http://localhost:4567/Geoff/loves/Gwynne
+# http://localhost:9393/Geoff/loves/Gwynne
 # The route gets decomposed based on the definition of the route into a params hash that you can do something with
 # It's Sinatra specific pattern matching
 # In Sinatra you define the routes and anything with a colon in front of it, it will look for a dynamic part of that URL to fill in
@@ -55,6 +55,43 @@ get '/:person_1/loves/:person_2' do
   end
 
 end
+
+#===========================Release 0========================#
+
+# 1.
+get '/contact' do
+  "The address is 908 N. Elm Street."
+end
+
+# http://localhost:9393/contact
+
+# 2.
+get '/great_job' do
+  if params[:name]
+    "Good job, #{params[:name]}!"
+  else
+    "Good job!"
+  end
+end
+
+# http://localhost:9393/great_job?name=Gwynne Good job, Gwynne!
+# http://localhost:9393/great_job returns Good job!
+
+# 3.
+get '/math/:number_a/:number_b' do
+  "#{(params[:number_a]).to_i + (params[:number_b]).to_i}"
+end
+
+# http://localhost:9393/math/4/6
+  # returns 10
+
+#===========================Release 1========================#
+
+# 1. No it's not! Rails and Grape are other web app libraries that can be used with Ruby.
+
+# 2. There are also other databases such as Postgres and Mongo.
+
+# 3. The term web stack refers to the components necessary to make a site run. For example, in Release 0, the web stack is Sinatra and SQLite3. I'm not sure if Shotgun counts as part of the web stack.
 
 # write a GET route that retrieves
 # all student data
