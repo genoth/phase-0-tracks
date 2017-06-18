@@ -97,14 +97,14 @@ end
 # all student data
 get '/students' do
   students = db.execute("SELECT * FROM students")
-  # response = ""
-  # students.each do |student|
-  #   response << "ID: #{student['id']}<br>"
-  #   response << "Name: #{student['name']}<br>"
-  #   response << "Age: #{student['age']}<br>"
-  #   response << "Campus: #{student['campus']}<br><br>"
-  # end
-  # response
+  response = ""
+  students.each do |student|
+    response << "ID: #{student['id']}<br>"
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br>"
+    response << "Campus: #{student['campus']}<br><br>"
+  end
+  response
 end
 
 # write a GET route that retrieves
@@ -112,5 +112,32 @@ end
 
 get '/students/:id' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
-  student.to_s
+    response = ""
+    response << "ID: #{student['id']}<br>"
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br>"
+    response << "Campus: #{student['campus']}<br><br>"
 end
+
+# http://localhost:9393/students/5
+  # returns
+  # ID: 5
+  # Name: Kolby Mertz
+  # Age: 38
+  # Campus: SF
+
+get '/students/name/:name' do
+  student = db.execute("SELECT * FROM students WHERE name=?", [params[:name]])[0]
+   response = ""
+    response << "Name: #{student['name']}<br>"
+    response << "ID: #{student['id']}<br>"
+    response << "Age: #{student['age']}<br>"
+    response << "Campus: #{student['campus']}<br><br>"
+end
+
+# http://localhost:9393/students/name/Cameron%20Metz
+  # returns
+  # Name: Cameron Metz
+  # ID: 49
+  # Age: 75
+  # Campus: SD
