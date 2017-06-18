@@ -97,14 +97,14 @@ end
 # all student data
 get '/students' do
   students = db.execute("SELECT * FROM students")
-  response = ""
-  students.each do |student|
-    response << "ID: #{student['id']}<br>"
-    response << "Name: #{student['name']}<br>"
-    response << "Age: #{student['age']}<br>"
-    response << "Campus: #{student['campus']}<br><br>"
-  end
-  response
+  # response = ""
+  # students.each do |student|
+  #   response << "ID: #{student['id']}<br>"
+  #   response << "Name: #{student['name']}<br>"
+  #   response << "Age: #{student['age']}<br>"
+  #   response << "Campus: #{student['campus']}<br><br>"
+  # end
+  # response
 end
 
 # write a GET route that retrieves
