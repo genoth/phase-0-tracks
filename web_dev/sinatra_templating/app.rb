@@ -1,6 +1,7 @@
 # require gems
 require 'sinatra'
 require 'sqlite3'
+require 'shotgun'
 
 set :public_folder, File.dirname(__FILE__) + '/static'
 
@@ -25,3 +26,18 @@ post '/students' do
 end
 
 # add static resources
+
+#==========================================
+
+legislation_db = SQLite3::Database.new("legislation.db")
+legislation_db.results_as_hash = true
+
+# show legislation on the home page
+get '/legislation' do
+  @legislation = legislation_db.execute("SELECT * FROM legislation")
+  erb :legislation
+end
+
+get '/legislation/new' do
+  erb :new_legislation
+end

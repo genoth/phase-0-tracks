@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Legislation</title>
+</head>
+<body>
+  <h1>Legislation</h1>
+  <p>Welcome to the legislation database.</p>
+  <p>Click <a href="legislation/new">here</a> to record a new piece of legislation.</p>
+    <ul>
+    <% @legislation.each do |legislation| %>
+      <li><%= legislation['bill_number'] %>, <%= legislation['bill_name'] %></li>
+    <% end %>
+  </ul>
+</body>
+</html>
